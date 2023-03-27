@@ -17,11 +17,6 @@ namespace ContactsApp.View
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddContactButton_Click(object sender, EventArgs e)
         {
             var form = new ContactForm();
@@ -87,6 +82,20 @@ namespace ContactsApp.View
         private void VKTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void BirthdayPanelCloseButton_Click(object sender, EventArgs e)
+        {
+            BirthdayPanel.Visible = false;
+        }
+
+        private void FindTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                var FormAbout = new AboutForm();
+                FormAbout.ShowDialog();
+            }
         }
     }
 }
