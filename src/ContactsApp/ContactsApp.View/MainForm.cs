@@ -97,5 +97,6 @@ namespace ContactsApp.View
                 FormAbout.ShowDialog();
             }
         }
+
     }
 }
