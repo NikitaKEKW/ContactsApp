@@ -89,7 +89,7 @@ namespace ContactsApp.View
             BirthdayPanel.Visible = false;
         }
 
-        private void FindTextBox_KeyUp(object sender, KeyEventArgs e)
+        private void MainForm_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
             {
@@ -97,6 +97,5 @@ namespace ContactsApp.View
                 FormAbout.ShowDialog();
             }
         }
-
     }
 }

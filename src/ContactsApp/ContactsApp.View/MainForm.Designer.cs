@@ -79,7 +79,7 @@
             this.ListBoxTableLayoutPanel.Name = "ListBoxTableLayoutPanel";
             this.ListBoxTableLayoutPanel.RowCount = 1;
             this.ListBoxTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ListBoxTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 461F));
+            this.ListBoxTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 450F));
             this.ListBoxTableLayoutPanel.Size = new System.Drawing.Size(800, 450);
             this.ListBoxTableLayoutPanel.TabIndex = 0;
             // 
@@ -134,6 +134,7 @@
             this.EditContactButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.EditContactButton.TabIndex = 1;
             this.EditContactButton.TabStop = false;
+            this.EditContactButton.Click += new System.EventHandler(this.AddContactButton_Click);
             this.EditContactButton.MouseEnter += new System.EventHandler(this.EditContactButton_MouseEnter);
             this.EditContactButton.MouseLeave += new System.EventHandler(this.EditContactButton_MouseLeave);
             // 
@@ -165,7 +166,6 @@
             this.FindTextBox.Name = "FindTextBox";
             this.FindTextBox.Size = new System.Drawing.Size(204, 20);
             this.FindTextBox.TabIndex = 1;
-            this.FindTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FindTextBox_KeyUp);
             // 
             // ContactsListBox
             // 
@@ -252,9 +252,9 @@
             this.BirthdaySurnamesLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
             this.BirthdaySurnamesLabel.Location = new System.Drawing.Point(80, 35);
             this.BirthdaySurnamesLabel.Name = "BirthdaySurnamesLabel";
-            this.BirthdaySurnamesLabel.Size = new System.Drawing.Size(201, 13);
+            this.BirthdaySurnamesLabel.Size = new System.Drawing.Size(216, 13);
             this.BirthdaySurnamesLabel.TabIndex = 2;
-            this.BirthdaySurnamesLabel.Text = "Абакумов, Петров, Иванов и др.";
+            this.BirthdaySurnamesLabel.Text = "Осипов, Агапова, Пономарев и др.";
             // 
             // TodaysBirthdayLabel
             // 
@@ -306,12 +306,12 @@
             // DateOfBirthLabel
             // 
             this.DateOfBirthLabel.AutoSize = true;
-            this.DateOfBirthLabel.Location = new System.Drawing.Point(108, 154);
+            this.DateOfBirthLabel.Location = new System.Drawing.Point(110, 154);
             this.DateOfBirthLabel.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.DateOfBirthLabel.Name = "DateOfBirthLabel";
-            this.DateOfBirthLabel.Size = new System.Drawing.Size(66, 13);
+            this.DateOfBirthLabel.Size = new System.Drawing.Size(69, 13);
             this.DateOfBirthLabel.TabIndex = 8;
-            this.DateOfBirthLabel.Text = "Date of Birth";
+            this.DateOfBirthLabel.Text = "Date of Birth:";
             // 
             // PhoneNumberTextBox
             // 
@@ -391,8 +391,10 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.ListBoxTableLayoutPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "MainForm";
             this.Text = "ContactsApp";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyUp);
             this.ListBoxTableLayoutPanel.ResumeLayout(false);
             this.ContactsPanel.ResumeLayout(false);
             this.ContactsPanel.PerformLayout();

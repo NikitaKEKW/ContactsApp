@@ -17,25 +17,26 @@ namespace ContactsApp.View
             InitializeComponent();
         }
 
-        private void AddPhotoButton_MouseHover(object sender, EventArgs e)
-        {
-            AddPhotoButton.Image = Properties.Resources.add_photo_32x32;
-            AddPhotoButton.BackColor = ColorTranslator.FromHtml("#F5F5FF");
-        }
-
         private void AddPhotoButton_MouseLeave(object sender, EventArgs e)
         {
             AddPhotoButton.Image = Properties.Resources.add_photo_32x32_gray;
             AddPhotoButton.BackColor = Color.White;
         }
 
+        private void AddPhotoButton_MouseEnter(object sender, EventArgs e)
+        {
+            AddPhotoButton.Image = Properties.Resources.add_photo_32x32;
+            AddPhotoButton.BackColor = ColorTranslator.FromHtml("#F5F5FF");
+        }
+
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            FullNameTextBox.Clear();
-            EmailTextBox.Clear();
-            PhoneNumberTextBox.Clear();
-            VKTextBox.Clear();
-            DateTimePicker.MinDate = DateTime.Today;
+            this.Close();
+        }
+
+        private void OkButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

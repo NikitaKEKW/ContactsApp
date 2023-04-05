@@ -22,5 +22,15 @@ namespace ContactsApp.View
         {
             this.Close();
         }
+
+        private void GithubLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/NikitaKEKW/ContactsApp");
+        }
+
+        private void IconsLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://icons8.com");
+        }
     }
 }
