@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ContactsApp.Model
 {
-    internal class Project
+    /// <summary>
+    /// Описывает проект
+    /// </summary>
+    public class Project
     {
     }
 }
