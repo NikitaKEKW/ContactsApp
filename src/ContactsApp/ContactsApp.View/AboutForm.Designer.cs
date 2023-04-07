@@ -35,7 +35,7 @@
             this.NameLabel = new System.Windows.Forms.Label();
             this.IconsLinkLabel = new System.Windows.Forms.LinkLabel();
             this.ImagesLabel = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.LicenseListBox = new System.Windows.Forms.ListBox();
             this.GithubLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
             this.AuthorLabel = new System.Windows.Forms.Label();
@@ -63,7 +63,7 @@
             this.AboutPanel.Controls.Add(this.NameLabel);
             this.AboutPanel.Controls.Add(this.IconsLinkLabel);
             this.AboutPanel.Controls.Add(this.ImagesLabel);
-            this.AboutPanel.Controls.Add(this.listBox1);
+            this.AboutPanel.Controls.Add(this.LicenseListBox);
             this.AboutPanel.Controls.Add(this.GithubLabel);
             this.AboutPanel.Controls.Add(this.EmailLabel);
             this.AboutPanel.Controls.Add(this.AuthorLabel);
@@ -126,10 +126,10 @@
             this.ImagesLabel.TabIndex = 7;
             this.ImagesLabel.Text = "All used images are downloaded from";
             // 
-            // listBox1
+            // LicenseListBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
+            this.LicenseListBox.FormattingEnabled = true;
+            this.LicenseListBox.Items.AddRange(new object[] {
             "Copyright (c) 2023 Nikita Danilik",
             "",
             "Permission is hereby granted, free of charge, to any person obtaining a copy of t" +
@@ -155,10 +155,10 @@
             "ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN ",
             "CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE ",
             "SOFTWARE. "});
-            this.listBox1.Location = new System.Drawing.Point(23, 212);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(477, 108);
-            this.listBox1.TabIndex = 6;
+            this.LicenseListBox.Location = new System.Drawing.Point(23, 212);
+            this.LicenseListBox.Name = "LicenseListBox";
+            this.LicenseListBox.Size = new System.Drawing.Size(477, 108);
+            this.LicenseListBox.TabIndex = 6;
             // 
             // GithubLabel
             // 
@@ -253,7 +253,7 @@
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.LinkLabel IconsLinkLabel;
         private System.Windows.Forms.Label ImagesLabel;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox LicenseListBox;
         private System.Windows.Forms.Label GithubLabel;
         private System.Windows.Forms.Label EmailLabel;
         private System.Windows.Forms.Label AuthorLabel;
