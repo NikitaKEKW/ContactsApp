@@ -30,19 +30,19 @@
         {
             this.AboutLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.AboutPanel = new System.Windows.Forms.Panel();
+            this.GithubLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.MyEmailLabel = new System.Windows.Forms.Label();
+            this.NameLabel = new System.Windows.Forms.Label();
+            this.IconsLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.ImagesLabel = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.GithubLabel = new System.Windows.Forms.Label();
+            this.EmailLabel = new System.Windows.Forms.Label();
+            this.AuthorLabel = new System.Windows.Forms.Label();
+            this.VersionLabel = new System.Windows.Forms.Label();
+            this.ContactsAppLabel = new System.Windows.Forms.Label();
             this.ButtonPanel = new System.Windows.Forms.Panel();
             this.OKButton = new System.Windows.Forms.Button();
-            this.ContactsAppLabel = new System.Windows.Forms.Label();
-            this.VersionLabel = new System.Windows.Forms.Label();
-            this.AuthorLabel = new System.Windows.Forms.Label();
-            this.EmailLabel = new System.Windows.Forms.Label();
-            this.GithubLabel = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.ImagesLabel = new System.Windows.Forms.Label();
-            this.IconsLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.NameLabel = new System.Windows.Forms.Label();
-            this.MyEmailLabel = new System.Windows.Forms.Label();
-            this.GithubLinkLabel = new System.Windows.Forms.LinkLabel();
             this.AboutLayoutPanel.SuspendLayout();
             this.AboutPanel.SuspendLayout();
             this.ButtonPanel.SuspendLayout();
@@ -75,70 +75,56 @@
             this.AboutPanel.Size = new System.Drawing.Size(515, 405);
             this.AboutPanel.TabIndex = 0;
             // 
-            // ButtonPanel
+            // GithubLinkLabel
             // 
-            this.ButtonPanel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ButtonPanel.Controls.Add(this.OKButton);
-            this.ButtonPanel.Location = new System.Drawing.Point(-3, 356);
-            this.ButtonPanel.Name = "ButtonPanel";
-            this.ButtonPanel.Size = new System.Drawing.Size(518, 46);
-            this.ButtonPanel.TabIndex = 0;
+            this.GithubLinkLabel.AutoSize = true;
+            this.GithubLinkLabel.LinkVisited = true;
+            this.GithubLinkLabel.Location = new System.Drawing.Point(139, 181);
+            this.GithubLinkLabel.Name = "GithubLinkLabel";
+            this.GithubLinkLabel.Size = new System.Drawing.Size(225, 13);
+            this.GithubLinkLabel.TabIndex = 11;
+            this.GithubLinkLabel.TabStop = true;
+            this.GithubLinkLabel.Text = "https://github.com/NikitaKEKW/ContactsApp";
+            this.GithubLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GithubLinkLabel_LinkClicked);
             // 
-            // OKButton
+            // MyEmailLabel
             // 
-            this.OKButton.Location = new System.Drawing.Point(428, 10);
-            this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(75, 23);
-            this.OKButton.TabIndex = 0;
-            this.OKButton.Text = "OK";
-            this.OKButton.UseVisualStyleBackColor = true;
-            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
+            this.MyEmailLabel.AutoSize = true;
+            this.MyEmailLabel.Location = new System.Drawing.Point(139, 151);
+            this.MyEmailLabel.Name = "MyEmailLabel";
+            this.MyEmailLabel.Size = new System.Drawing.Size(109, 13);
+            this.MyEmailLabel.TabIndex = 10;
+            this.MyEmailLabel.Text = "nikita.danilik@no.mail";
             // 
-            // ContactsAppLabel
+            // NameLabel
             // 
-            this.ContactsAppLabel.AutoSize = true;
-            this.ContactsAppLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ContactsAppLabel.Location = new System.Drawing.Point(14, 48);
-            this.ContactsAppLabel.Name = "ContactsAppLabel";
-            this.ContactsAppLabel.Size = new System.Drawing.Size(171, 31);
-            this.ContactsAppLabel.TabIndex = 1;
-            this.ContactsAppLabel.Text = "ContactsApp";
+            this.NameLabel.AutoSize = true;
+            this.NameLabel.Location = new System.Drawing.Point(139, 122);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(69, 13);
+            this.NameLabel.TabIndex = 9;
+            this.NameLabel.Text = "Nikita Danilik";
             // 
-            // VersionLabel
+            // IconsLinkLabel
             // 
-            this.VersionLabel.AutoSize = true;
-            this.VersionLabel.Location = new System.Drawing.Point(20, 83);
-            this.VersionLabel.Name = "VersionLabel";
-            this.VersionLabel.Size = new System.Drawing.Size(31, 13);
-            this.VersionLabel.TabIndex = 2;
-            this.VersionLabel.Text = "v 1.0";
+            this.IconsLinkLabel.AutoSize = true;
+            this.IconsLinkLabel.LinkVisited = true;
+            this.IconsLinkLabel.Location = new System.Drawing.Point(202, 327);
+            this.IconsLinkLabel.Name = "IconsLinkLabel";
+            this.IconsLinkLabel.Size = new System.Drawing.Size(61, 13);
+            this.IconsLinkLabel.TabIndex = 8;
+            this.IconsLinkLabel.TabStop = true;
+            this.IconsLinkLabel.Text = "icons8.com";
+            this.IconsLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.IconsLinkLabel_LinkClicked);
             // 
-            // AuthorLabel
+            // ImagesLabel
             // 
-            this.AuthorLabel.AutoSize = true;
-            this.AuthorLabel.Location = new System.Drawing.Point(20, 122);
-            this.AuthorLabel.Name = "AuthorLabel";
-            this.AuthorLabel.Size = new System.Drawing.Size(41, 13);
-            this.AuthorLabel.TabIndex = 3;
-            this.AuthorLabel.Text = "Author:";
-            // 
-            // EmailLabel
-            // 
-            this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Location = new System.Drawing.Point(20, 151);
-            this.EmailLabel.Name = "EmailLabel";
-            this.EmailLabel.Size = new System.Drawing.Size(38, 13);
-            this.EmailLabel.TabIndex = 4;
-            this.EmailLabel.Text = "E-mail:";
-            // 
-            // GithubLabel
-            // 
-            this.GithubLabel.AutoSize = true;
-            this.GithubLabel.Location = new System.Drawing.Point(20, 181);
-            this.GithubLabel.Name = "GithubLabel";
-            this.GithubLabel.Size = new System.Drawing.Size(41, 13);
-            this.GithubLabel.TabIndex = 5;
-            this.GithubLabel.Text = "Github:";
+            this.ImagesLabel.AutoSize = true;
+            this.ImagesLabel.Location = new System.Drawing.Point(23, 327);
+            this.ImagesLabel.Name = "ImagesLabel";
+            this.ImagesLabel.Size = new System.Drawing.Size(182, 13);
+            this.ImagesLabel.TabIndex = 7;
+            this.ImagesLabel.Text = "All used images are downloaded from";
             // 
             // listBox1
             // 
@@ -174,56 +160,70 @@
             this.listBox1.Size = new System.Drawing.Size(477, 108);
             this.listBox1.TabIndex = 6;
             // 
-            // ImagesLabel
+            // GithubLabel
             // 
-            this.ImagesLabel.AutoSize = true;
-            this.ImagesLabel.Location = new System.Drawing.Point(23, 327);
-            this.ImagesLabel.Name = "ImagesLabel";
-            this.ImagesLabel.Size = new System.Drawing.Size(182, 13);
-            this.ImagesLabel.TabIndex = 7;
-            this.ImagesLabel.Text = "All used images are downloaded from";
+            this.GithubLabel.AutoSize = true;
+            this.GithubLabel.Location = new System.Drawing.Point(20, 181);
+            this.GithubLabel.Name = "GithubLabel";
+            this.GithubLabel.Size = new System.Drawing.Size(41, 13);
+            this.GithubLabel.TabIndex = 5;
+            this.GithubLabel.Text = "Github:";
             // 
-            // IconsLinkLabel
+            // EmailLabel
             // 
-            this.IconsLinkLabel.AutoSize = true;
-            this.IconsLinkLabel.LinkVisited = true;
-            this.IconsLinkLabel.Location = new System.Drawing.Point(202, 327);
-            this.IconsLinkLabel.Name = "IconsLinkLabel";
-            this.IconsLinkLabel.Size = new System.Drawing.Size(61, 13);
-            this.IconsLinkLabel.TabIndex = 8;
-            this.IconsLinkLabel.TabStop = true;
-            this.IconsLinkLabel.Text = "icons8.com";
-            this.IconsLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.IconsLinkLabel_LinkClicked);
+            this.EmailLabel.AutoSize = true;
+            this.EmailLabel.Location = new System.Drawing.Point(20, 151);
+            this.EmailLabel.Name = "EmailLabel";
+            this.EmailLabel.Size = new System.Drawing.Size(38, 13);
+            this.EmailLabel.TabIndex = 4;
+            this.EmailLabel.Text = "E-mail:";
             // 
-            // NameLabel
+            // AuthorLabel
             // 
-            this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(139, 122);
-            this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(69, 13);
-            this.NameLabel.TabIndex = 9;
-            this.NameLabel.Text = "Nikita Danilik";
+            this.AuthorLabel.AutoSize = true;
+            this.AuthorLabel.Location = new System.Drawing.Point(20, 122);
+            this.AuthorLabel.Name = "AuthorLabel";
+            this.AuthorLabel.Size = new System.Drawing.Size(41, 13);
+            this.AuthorLabel.TabIndex = 3;
+            this.AuthorLabel.Text = "Author:";
             // 
-            // MyEmailLabel
+            // VersionLabel
             // 
-            this.MyEmailLabel.AutoSize = true;
-            this.MyEmailLabel.Location = new System.Drawing.Point(139, 151);
-            this.MyEmailLabel.Name = "MyEmailLabel";
-            this.MyEmailLabel.Size = new System.Drawing.Size(109, 13);
-            this.MyEmailLabel.TabIndex = 10;
-            this.MyEmailLabel.Text = "nikita.danilik@no.mail";
+            this.VersionLabel.AutoSize = true;
+            this.VersionLabel.Location = new System.Drawing.Point(20, 83);
+            this.VersionLabel.Name = "VersionLabel";
+            this.VersionLabel.Size = new System.Drawing.Size(31, 13);
+            this.VersionLabel.TabIndex = 2;
+            this.VersionLabel.Text = "v 1.0";
             // 
-            // GithubLinkLabel
+            // ContactsAppLabel
             // 
-            this.GithubLinkLabel.AutoSize = true;
-            this.GithubLinkLabel.LinkVisited = true;
-            this.GithubLinkLabel.Location = new System.Drawing.Point(139, 181);
-            this.GithubLinkLabel.Name = "GithubLinkLabel";
-            this.GithubLinkLabel.Size = new System.Drawing.Size(225, 13);
-            this.GithubLinkLabel.TabIndex = 11;
-            this.GithubLinkLabel.TabStop = true;
-            this.GithubLinkLabel.Text = "https://github.com/NikitaKEKW/ContactsApp";
-            this.GithubLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GithubLinkLabel_LinkClicked);
+            this.ContactsAppLabel.AutoSize = true;
+            this.ContactsAppLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ContactsAppLabel.Location = new System.Drawing.Point(14, 48);
+            this.ContactsAppLabel.Name = "ContactsAppLabel";
+            this.ContactsAppLabel.Size = new System.Drawing.Size(171, 31);
+            this.ContactsAppLabel.TabIndex = 1;
+            this.ContactsAppLabel.Text = "ContactsApp";
+            // 
+            // ButtonPanel
+            // 
+            this.ButtonPanel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ButtonPanel.Controls.Add(this.OKButton);
+            this.ButtonPanel.Location = new System.Drawing.Point(-3, 356);
+            this.ButtonPanel.Name = "ButtonPanel";
+            this.ButtonPanel.Size = new System.Drawing.Size(518, 46);
+            this.ButtonPanel.TabIndex = 0;
+            // 
+            // OKButton
+            // 
+            this.OKButton.Location = new System.Drawing.Point(428, 10);
+            this.OKButton.Name = "OKButton";
+            this.OKButton.Size = new System.Drawing.Size(75, 23);
+            this.OKButton.TabIndex = 0;
+            this.OKButton.Text = "OK";
+            this.OKButton.UseVisualStyleBackColor = true;
+            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
             // AboutForm
             // 
@@ -232,6 +232,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(510, 402);
             this.Controls.Add(this.AboutLayoutPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AboutForm";
             this.ShowIcon = false;
             this.AboutLayoutPanel.ResumeLayout(false);

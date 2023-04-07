@@ -93,7 +93,7 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(425, 4);
+            this.CancelButton.Location = new System.Drawing.Point(425, 7);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
             this.CancelButton.TabIndex = 1;
@@ -103,7 +103,7 @@
             // 
             // OkButton
             // 
-            this.OkButton.Location = new System.Drawing.Point(344, 4);
+            this.OkButton.Location = new System.Drawing.Point(344, 7);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 23);
             this.OkButton.TabIndex = 0;
@@ -223,6 +223,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(509, 341);
             this.Controls.Add(this.AddContactLayoutPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ContactForm";
             this.ShowIcon = false;
             this.AddContactLayoutPanel.ResumeLayout(false);

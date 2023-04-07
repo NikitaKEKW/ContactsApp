@@ -7,17 +7,12 @@ using System.Threading.Tasks;
 
 namespace ContactsApp.Model
 {
-    internal class ContactClass
+    internal class Contact : ICloneable
     {
-        /// <summary>
-        /// Описывает контакт
-        /// </summary>
-        public class Contact : ICloneable
-        {
             /// <summary>
             /// Полное имя контакта
             /// </summary>
-            private string _fullname;
+            private string _fullName;
 
             /// <summary>
             /// Электронная почта контакта
@@ -27,17 +22,17 @@ namespace ContactsApp.Model
             /// <summary>
             /// Номер телефона контакта
             /// </summary>
-            private string _phonenumber;
+            private string _phoneNumber;
 
             /// <summary>
             /// Дата рождения контакта
             /// </summary>
-            private DateTime _dateofbirth;
+            private DateTime _dateOfBirth;
 
             /// <summary>
             /// ID Вконтакте контакта
             /// </summary>
-            private string _vkid;
+            private string _vkId;
 
             /// <summary>
             /// Возвращает или задает полное имя контакта
@@ -46,15 +41,15 @@ namespace ContactsApp.Model
             {
                 get
                 {
-                    return _fullname;
+                    return _fullName;
                 }
                 set
                 {
-                    if (_fullname.Length >=100)
+                    if (_fullName.Length >=100)
                     {
-                        throw new ArgumentException($"Contact's full name must be less than {_fullname.Length}");
+                        throw new ArgumentException($"Contact's full name must be less than {_fullName.Length}");
                     }
-                    _fullname = value;
+                    _fullName = value;
                 }
             }
 
@@ -84,16 +79,16 @@ namespace ContactsApp.Model
             {
                 get
                 {
-                    return _phonenumber;
+                    return _phoneNumber;
                 }
                 set
                 {
                     string PhoneNumberValidation = @"^(((\+7|7|8)(\d{3})\)\d{3}-(\d{2}-\d{2}))$)";
-                    if(!Regex.IsMatch(_phonenumber, PhoneNumberValidation))
+                    if(!Regex.IsMatch(_phoneNumber, PhoneNumberValidation))
                     {
                         throw new ArgumentException($"The phone number contains an invalid character.");
                     }
-                    _phonenumber = value;
+                    _phoneNumber = value;
                 }
             }
 
@@ -104,15 +99,15 @@ namespace ContactsApp.Model
             {
                 get
                 {
-                    return _dateofbirth;
+                    return _dateOfBirth;
                 }
                 set
                 {
-                    if (_dateofbirth.Year <= 1900 && _dateofbirth.Year >= 2023)
+                    if (_dateOfBirth.Year <= 1900 && _dateOfBirth.Year >= 2023)
                     {
-                        throw new ArgumentException($"Year must be less than current year" + $"But was {_dateofbirth.Year}");
+                        throw new ArgumentException($"Year must be less than current year" + $"But was {_dateOfBirth.Year}");
                     }
-                    _dateofbirth = value;
+                    _dateOfBirth = value;
                 }
             }
 
@@ -123,15 +118,15 @@ namespace ContactsApp.Model
             {
                 get
                 {
-                    return _vkid;
+                    return _vkId;
                 }
                 set
                 {
-                    if (_vkid.Length >= 50)
+                    if (_vkId.Length >= 50)
                     {
-                        throw new ArgumentException($"Contact's Vk ID must be less than {_vkid.Length}");
+                        throw new ArgumentException($"Contact's Vk ID must be less than {_vkId.Length}");
                     }
-                    _vkid = value;
+                    _vkId = value;
                 }
             }
 
@@ -140,11 +135,11 @@ namespace ContactsApp.Model
            /// </summary>
             public Contact(string fullname, string email, string phonenumber, DateTime dateofbirth, string vkid)
             {
-                _fullname = fullname;
-                _email = email;
-                _phonenumber = phonenumber;
-                _dateofbirth = dateofbirth;
-                _vkid = vkid;
+                FullName = fullname;
+                Email = email;
+                PhoneNumber = phonenumber;
+                DateOfBirth = dateofbirth;
+                VkId = vkid;
             }
 
             ///  <summary>
@@ -156,4 +151,3 @@ namespace ContactsApp.Model
             }
          }
      }
- }

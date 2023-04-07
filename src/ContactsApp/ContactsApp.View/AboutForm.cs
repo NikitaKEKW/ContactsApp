@@ -32,5 +32,5 @@ namespace ContactsApp.View
         {
             System.Diagnostics.Process.Start("https://icons8.com");
         }
-    }
+     }
 }
