@@ -7,12 +7,15 @@ using System.Threading.Tasks;
 
 namespace ContactsApp.Model
 {
+    /// <summary>
+    /// Описывает контакт
+    /// </summary>
     internal class Contact : ICloneable
     {
             /// <summary>
             /// Полное имя контакта
             /// </summary>
-            private string _fullName;
+            private string _fullName; 
 
             /// <summary>
             /// Электронная почта контакта
@@ -83,7 +86,7 @@ namespace ContactsApp.Model
                 }
                 set
                 {
-                    string PhoneNumberValidation = @"^(((\+7|7|8)(\d{3})\)\d{3}-(\d{2}-\d{2}))$)";
+                    string PhoneNumberValidation = @"^(((\+7|7|8)[\(]?(\d{3})\)\d{3}-(\d{2}-\d{2}))$)";
                     if(!Regex.IsMatch(_phoneNumber, PhoneNumberValidation))
                     {
                         throw new ArgumentException($"The phone number contains an invalid character.");
@@ -103,7 +106,7 @@ namespace ContactsApp.Model
                 }
                 set
                 {
-                    if (_dateOfBirth.Year <= 1900 && _dateOfBirth.Year >= 2023)
+                    if (_dateOfBirth.Year <= 1900 && _dateOfBirth.Year >= DateTime.Now.Year)
                     {
                         throw new ArgumentException($"Incorrect year" + $"Year was {_dateOfBirth.Year}");
                     }
@@ -130,16 +133,21 @@ namespace ContactsApp.Model
                 }
             }
 
-           ///  <summary>
-           /// Создает экземпляр <see cref="Contact">
-           /// </summary>
-            public Contact(string fullname, string email, string phonenumber, DateTime dateofbirth, string vkid)
+        /// <summary>
+        /// Создает экземпляр <see cref="Contact">
+        /// </summary>
+        /// <param name="fullName"></param>
+        /// <param name="email"></param>
+        /// <param name="phoneNumber"></param>
+        /// <param name="dateOfBirth"></param>
+        /// <param name="vkId"></param>
+        public Contact(string fullName, string email, string phoneNumber, DateTime dateOfBirth, string vkId)
             {
-                FullName = fullname;
+                FullName = fullName;
                 Email = email;
-                PhoneNumber = phonenumber;
-                DateOfBirth = dateofbirth;
-                VkId = vkid;
+                PhoneNumber = phoneNumber;
+                DateOfBirth = dateOfBirth;
+                VkId = vkId;
             }
 
             ///  <summary>

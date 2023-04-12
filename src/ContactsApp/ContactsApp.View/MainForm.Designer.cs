@@ -118,6 +118,7 @@
             this.DeleteContactButton.Image = global::ContactsApp.View.Properties.Resources.remove_contact_32x32_gray;
             this.DeleteContactButton.Location = new System.Drawing.Point(161, 3);
             this.DeleteContactButton.Name = "DeleteContactButton";
+            this.DeleteContactButton.Padding = new System.Windows.Forms.Padding(3);
             this.DeleteContactButton.Size = new System.Drawing.Size(74, 29);
             this.DeleteContactButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.DeleteContactButton.TabIndex = 0;

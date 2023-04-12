@@ -210,14 +210,14 @@
             // 
             this.ButtonPanel.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ButtonPanel.Controls.Add(this.OKButton);
-            this.ButtonPanel.Location = new System.Drawing.Point(-3, 356);
+            this.ButtonPanel.Location = new System.Drawing.Point(-3, 353);
             this.ButtonPanel.Name = "ButtonPanel";
-            this.ButtonPanel.Size = new System.Drawing.Size(518, 46);
+            this.ButtonPanel.Size = new System.Drawing.Size(518, 49);
             this.ButtonPanel.TabIndex = 0;
             // 
             // OKButton
             // 
-            this.OKButton.Location = new System.Drawing.Point(428, 10);
+            this.OKButton.Location = new System.Drawing.Point(428, 14);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(75, 23);
             this.OKButton.TabIndex = 0;

@@ -86,14 +86,14 @@
             this.ButtonsPanel.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ButtonsPanel.Controls.Add(this.CancelButton);
             this.ButtonsPanel.Controls.Add(this.OkButton);
-            this.ButtonsPanel.Location = new System.Drawing.Point(-3, 299);
+            this.ButtonsPanel.Location = new System.Drawing.Point(-3, 294);
             this.ButtonsPanel.Name = "ButtonsPanel";
-            this.ButtonsPanel.Size = new System.Drawing.Size(515, 43);
+            this.ButtonsPanel.Size = new System.Drawing.Size(515, 48);
             this.ButtonsPanel.TabIndex = 13;
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(425, 7);
+            this.CancelButton.Location = new System.Drawing.Point(425, 12);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
             this.CancelButton.TabIndex = 1;
@@ -103,7 +103,7 @@
             // 
             // OkButton
             // 
-            this.OkButton.Location = new System.Drawing.Point(344, 7);
+            this.OkButton.Location = new System.Drawing.Point(344, 12);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 23);
             this.OkButton.TabIndex = 0;
@@ -113,17 +113,17 @@
             // 
             // DateOfBirthTimePicker
             // 
-            this.DateOfBirthTimePicker.Location = new System.Drawing.Point(118, 191);
+            this.DateOfBirthTimePicker.Location = new System.Drawing.Point(121, 191);
             this.DateOfBirthTimePicker.Name = "DateOfBirthTimePicker";
-            this.DateOfBirthTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.DateOfBirthTimePicker.Size = new System.Drawing.Size(197, 20);
             this.DateOfBirthTimePicker.TabIndex = 12;
             this.DateOfBirthTimePicker.Value = new System.DateTime(2000, 3, 6, 0, 0, 0, 0);
             // 
             // VKTextBox
             // 
-            this.VKTextBox.Location = new System.Drawing.Point(118, 239);
+            this.VKTextBox.Location = new System.Drawing.Point(121, 239);
             this.VKTextBox.Name = "VKTextBox";
-            this.VKTextBox.Size = new System.Drawing.Size(200, 20);
+            this.VKTextBox.Size = new System.Drawing.Size(197, 20);
             this.VKTextBox.TabIndex = 11;
             // 
             // VKLabel
@@ -146,9 +146,9 @@
             // 
             // PhoneNumberTextBox
             // 
-            this.PhoneNumberTextBox.Location = new System.Drawing.Point(118, 143);
+            this.PhoneNumberTextBox.Location = new System.Drawing.Point(121, 143);
             this.PhoneNumberTextBox.Name = "PhoneNumberTextBox";
-            this.PhoneNumberTextBox.Size = new System.Drawing.Size(200, 20);
+            this.PhoneNumberTextBox.Size = new System.Drawing.Size(197, 20);
             this.PhoneNumberTextBox.TabIndex = 7;
             this.PhoneNumberTextBox.Text = "+7 (999) 654-22-13";
             // 
@@ -163,9 +163,9 @@
             // 
             // EmailTextBox
             // 
-            this.EmailTextBox.Location = new System.Drawing.Point(118, 92);
+            this.EmailTextBox.Location = new System.Drawing.Point(121, 92);
             this.EmailTextBox.Name = "EmailTextBox";
-            this.EmailTextBox.Size = new System.Drawing.Size(375, 20);
+            this.EmailTextBox.Size = new System.Drawing.Size(376, 20);
             this.EmailTextBox.TabIndex = 5;
             this.EmailTextBox.Text = "osipov@no.mail";
             // 
@@ -180,9 +180,9 @@
             // 
             // FullNameTextBox
             // 
-            this.FullNameTextBox.Location = new System.Drawing.Point(118, 42);
+            this.FullNameTextBox.Location = new System.Drawing.Point(121, 42);
             this.FullNameTextBox.Name = "FullNameTextBox";
-            this.FullNameTextBox.Size = new System.Drawing.Size(375, 20);
+            this.FullNameTextBox.Size = new System.Drawing.Size(376, 20);
             this.FullNameTextBox.TabIndex = 3;
             this.FullNameTextBox.Text = "Осипов Алексей Даниилович";
             // 
@@ -197,10 +197,12 @@
             // 
             // AddPhotoButton
             // 
+            this.AddPhotoButton.BackColor = System.Drawing.Color.Transparent;
+            this.AddPhotoButton.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.AddPhotoButton.Image = global::ContactsApp.View.Properties.Resources.add_photo_32x32_gray;
-            this.AddPhotoButton.Location = new System.Drawing.Point(46, 118);
+            this.AddPhotoButton.Location = new System.Drawing.Point(15, 109);
             this.AddPhotoButton.Name = "AddPhotoButton";
-            this.AddPhotoButton.Size = new System.Drawing.Size(32, 32);
+            this.AddPhotoButton.Size = new System.Drawing.Size(100, 22);
             this.AddPhotoButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.AddPhotoButton.TabIndex = 1;
             this.AddPhotoButton.TabStop = false;
@@ -210,7 +212,7 @@
             // PlaceHolderPictureBox
             // 
             this.PlaceHolderPictureBox.Image = global::ContactsApp.View.Properties.Resources.photo_placeholder_100x100;
-            this.PlaceHolderPictureBox.Location = new System.Drawing.Point(12, 12);
+            this.PlaceHolderPictureBox.Location = new System.Drawing.Point(15, 12);
             this.PlaceHolderPictureBox.Name = "PlaceHolderPictureBox";
             this.PlaceHolderPictureBox.Size = new System.Drawing.Size(100, 100);
             this.PlaceHolderPictureBox.TabIndex = 0;
