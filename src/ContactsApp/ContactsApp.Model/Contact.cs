@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -48,12 +49,13 @@ namespace ContactsApp.Model
                 }
                 set
                 {
-                    if (_fullName.Length >=100)
+                    if (value.ToString().Length >=100)
                     {
                         throw new ArgumentException($"Contact's full name must be less than {_fullName.Length}");
                     }
-                    _fullName = value;
-                }
+                        TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+                        _fullName = ti.ToTitleCase(value).ToString();
+                 }
             }
 
             /// <summary>
@@ -67,7 +69,7 @@ namespace ContactsApp.Model
                 }
                 set
                 {
-                    if (_email.Length >= 100)
+                    if (value.ToString().Length >= 100)
                     {
                         throw new ArgumentException($"Contact's email must be less than {_email.Length}");
                     }
@@ -87,7 +89,7 @@ namespace ContactsApp.Model
                 set
                 {
                     string PhoneNumberValidation = @"^(((\+7|7|8)[\(]?(\d{3})\)\d{3}-(\d{2}-\d{2}))$)";
-                    if(!Regex.IsMatch(_phoneNumber, PhoneNumberValidation))
+                    if(!Regex.IsMatch(value.ToString(), PhoneNumberValidation))
                     {
                         throw new ArgumentException($"The phone number contains an invalid character.");
                     }
@@ -125,7 +127,7 @@ namespace ContactsApp.Model
                 }
                 set
                 {
-                    if (_vkId.Length >= 50)
+                    if (value.ToString().Length >= 50)
                     {
                         throw new ArgumentException($"Contact's Vk ID must be less than {_vkId.Length}");
                     }

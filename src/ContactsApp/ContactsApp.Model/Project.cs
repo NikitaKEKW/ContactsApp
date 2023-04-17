@@ -1,40 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ContactsApp.Model
 {
-    internal class Project
+    /// <summary>
+    /// Описывает список контактов
+    /// </summary>
+    public class Project
     {
         /// <summary>
-        /// Возвращает или задает контакт
+        /// Возвращает или задает список контактов
         /// </summary>
-        public List<string> Contacts { get; set; } = new List<string>();
+        public List<Contact> Contacts  = new List<Contact>();
 
         /// <summary>
-        /// Метод сортировки контактов по одному имени
+        /// Возвращает отсортированный список контактов
         /// </summary>
-        public string SortContactsByFullName(Contact contact)
+        /// <param name="contact"></param>
+        /// <returns></returns>
+        public List<Contact> SortContactsByFullName(List<Contact> contact)
         {
-            return contact.FullName;
+            var selectedContact = from p in contact
+                                  orderby p.FullName
+                                  select p.FullName;
+            return (List<Contact>)selectedContact;
+        }
+        
+        /// <summary>
+        /// Возвращает список именниников
+        /// </summary>
+        /// <param name="contact"></param>
+        /// <returns></returns>
+        public List<Contact> FindBirthdaysToday(List<Contact> contact)
+        {
+            var selectedContact = from p in contact
+                                  where p.DateOfBirth == DateTime.Now
+                                  select p;
+            return (List<Contact>)selectedContact;
         }
 
         /// <summary>
-        /// Метод по поиску именников среди контактов
+        /// Возвращает контакты найденные по подстроке
         /// </summary>
-        public string FindBirthdaysToday(Contact contact)
+        /// <param name="contact"></param>
+        /// <returns></returns>
+        public List<Contact> FindContants(List<Contact> contact)
         {
-            return contact.FullName;
-        }
-
-        /// <summary>
-        /// Метод по поиску контактов по подстроке
-        /// </summary>
-        public string FindContants(Contact contact)
-        {
-            return contact.FullName;
+            string contactToFind = "Данилик";
+            var selectedContact = from p in contact
+                                  where p.FullName == contactToFind
+                                  select p;
+            return (List<Contact>)selectedContact;
         }
     }
 }
