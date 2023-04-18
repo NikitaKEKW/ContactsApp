@@ -7,20 +7,80 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ContactsApp.Model;
 
 namespace ContactsApp.View
 {
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Поле класса Prohect
+        /// </summary>
+        private Project _project;
+
+        /// <summary>
+        /// Создание объекта для генерации чисел 
+        /// </summary>
+        
+        Random rnd = new Random();
+        /// <summary>
+        /// Метод по обновлению списка контактов
+        /// </summary>
+
+        private void UpdateListBox()
+        {
+            ContactsListBox.Items.Clear();
+            foreach (Contact contact in _project.Contacts)
+            {
+                ContactsListBox.Items.Add(contact.FullName);
+            }
+        }
+
+        /// <summary>
+        /// Метод добавления контакта в список
+        /// </summary>
+        private void AddContact()
+        {
+            _project = new Project();
+            string[] arrFullName = { "Данилик", "Зорин", "ПетруШкин", "Кочетов", "Гаврилов" };
+            string[] arrEmail = { "dannl@no.mail", "zordl@no.mail", "petsp@no.mail", "kochid@no.mail", "gavdv@no.mail" };
+            string[] arrPhoneNumber = { "89684566545", "896321459656", "89874562541", "89521234567", "89329516784" };
+            string[] arrVkId = { "@id123654", "@myid", "@id123089", "@id1337228", "@qwerty" };
+
+            var listContact = new List<Contact>();
+            int randomContact;
+
+            for (int i = 0; i < 6; i++)
+            {
+                randomContact = GetRandom(rnd);
+                Contact contact = new Contact(arrFullName[randomContact], arrEmail[randomContact],
+                    arrPhoneNumber[randomContact], DateTime.Now, arrVkId[randomContact]);
+                listContact.Add(contact);
+                _project.Contacts.Add(contact);
+            }
+        }
+
+        /// <summary>
+        /// Метод генерации рандомного числа
+        /// </summary>
+        /// <param name="rnd"></param>
+        /// <returns></returns>
+        static int GetRandom(Random rnd)
+        {
+            return rnd.Next(5);
+        }
+
         public MainForm()
         {
             InitializeComponent();
         }
-
+        
         private void AddContactButton_Click(object sender, EventArgs e)
         {
+            AddContact();
+            UpdateListBox();
             var form = new ContactForm();
-            form.ShowDialog(); 
+            form.ShowDialog();
         }
 
         private void AddContactButton_MouseEnter(object sender, EventArgs e)

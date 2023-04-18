@@ -88,11 +88,11 @@ namespace ContactsApp.Model
                 }
                 set
                 {
-                    string PhoneNumberValidation = @"^(((\+7|7|8)[\(]?(\d{3})\)\d{3}-(\d{2}-\d{2}))$)";
-                    if(!Regex.IsMatch(value.ToString(), PhoneNumberValidation))
-                    {
-                        throw new ArgumentException($"The phone number contains an invalid character.");
-                    }
+                //    string PhoneNumberValidation = @"^(((\+7|7|8)[\(]?(\d{3})\)\d{3}-(\d{2}-\d{2}))$)";
+                //    if(!Regex.IsMatch(value.ToString(), PhoneNumberValidation))
+                //    {
+               //         throw new ArgumentException($"The phone number contains an invalid character.");
+               //     }
                     _phoneNumber = value;
                 }
             }

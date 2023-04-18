@@ -25,8 +25,8 @@ namespace ContactsApp.Model
         public List<Contact> SortContactsByFullName(List<Contact> contact)
         {
             var selectedContact = from p in contact
-                                  orderby p.FullName
-                                  select p.FullName;
+            orderby p.FullName
+            select p.FullName;
             return (List<Contact>)selectedContact;
         }
         
@@ -38,8 +38,8 @@ namespace ContactsApp.Model
         public List<Contact> FindBirthdaysToday(List<Contact> contact)
         {
             var selectedContact = from p in contact
-                                  where p.DateOfBirth == DateTime.Now
-                                  select p;
+            where p.DateOfBirth == DateTime.Now
+            select p;
             return (List<Contact>)selectedContact;
         }
 
@@ -52,8 +52,8 @@ namespace ContactsApp.Model
         {
             string contactToFind = "Данилик";
             var selectedContact = from p in contact
-                                  where p.FullName == contactToFind
-                                  select p;
+            where p.FullName == contactToFind
+            select p;
             return (List<Contact>)selectedContact;
         }
     }
