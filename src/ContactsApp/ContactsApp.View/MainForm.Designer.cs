@@ -322,7 +322,7 @@
             this.PhoneNumberTextBox.Name = "PhoneNumberTextBox";
             this.PhoneNumberTextBox.Size = new System.Drawing.Size(150, 20);
             this.PhoneNumberTextBox.TabIndex = 7;
-            this.PhoneNumberTextBox.Text = "+7 (999) 654-22-13";
+            this.PhoneNumberTextBox.Text = "+79996542213";
             this.PhoneNumberTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneNumberTextBox_KeyPress);
             // 
             // PhoneNumberLabel

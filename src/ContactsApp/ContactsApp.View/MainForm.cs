@@ -23,7 +23,6 @@ namespace ContactsApp.View
         /// <summary>
         /// Создание объекта для генерации чисел 
         /// </summary>
-        
         Random rnd = new Random();
 
         /// <summary>
@@ -233,7 +232,10 @@ namespace ContactsApp.View
             {
                 Environment.Exit(0);
             }
-
+            else
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
