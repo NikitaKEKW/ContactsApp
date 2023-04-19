@@ -53,7 +53,7 @@ namespace ContactsApp.Model
                     {
                         throw new ArgumentException($"Contact's full name must be less than {_fullName.Length}");
                     }
-                        TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+                         TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
                         _fullName = ti.ToTitleCase(value).ToString();
                  }
             }
@@ -88,12 +88,12 @@ namespace ContactsApp.Model
                 }
                 set
                 {
-                //    string PhoneNumberValidation = @"^(((\+7|7|8)[\(]?(\d{3})\)\d{3}-(\d{2}-\d{2}))$)";
-                //    if(!Regex.IsMatch(value.ToString(), PhoneNumberValidation))
-                //    {
-               //         throw new ArgumentException($"The phone number contains an invalid character.");
-               //     }
-                    _phoneNumber = value;
+                   string PhoneNumberValidation = @"^((\+7|7|8)[\(]?(\d{3})[\)]?\d{3}[-]?(\d{2}[-]?\d{2}))$";
+                   if(!Regex.IsMatch(value.ToString(), PhoneNumberValidation))
+                   {
+                        throw new ArgumentException($"The phone number contains an invalid character.");
+                   }
+                _phoneNumber = value;
                 }
             }
 

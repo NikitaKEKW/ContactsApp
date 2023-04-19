@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ListBoxTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.ContactsPanel = new System.Windows.Forms.Panel();
+            this.ContactsListBox = new System.Windows.Forms.ListBox();
             this.ButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.DeleteContactButton = new System.Windows.Forms.PictureBox();
             this.EditContactButton = new System.Windows.Forms.PictureBox();
             this.AddContactButton = new System.Windows.Forms.PictureBox();
             this.FindLabel = new System.Windows.Forms.Label();
             this.FindTextBox = new System.Windows.Forms.TextBox();
-            this.ContactsListBox = new System.Windows.Forms.ListBox();
             this.FullDataPanel = new System.Windows.Forms.Panel();
             this.BirthdayPanel = new System.Windows.Forms.Panel();
             this.BirthdayPanelCloseButton = new System.Windows.Forms.Button();
@@ -85,15 +85,45 @@
             // 
             // ContactsPanel
             // 
+            this.ContactsPanel.Controls.Add(this.ContactsListBox);
             this.ContactsPanel.Controls.Add(this.ButtonsTableLayoutPanel);
             this.ContactsPanel.Controls.Add(this.FindLabel);
             this.ContactsPanel.Controls.Add(this.FindTextBox);
-            this.ContactsPanel.Controls.Add(this.ContactsListBox);
             this.ContactsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContactsPanel.Location = new System.Drawing.Point(3, 3);
             this.ContactsPanel.Name = "ContactsPanel";
             this.ContactsPanel.Size = new System.Drawing.Size(244, 444);
             this.ContactsPanel.TabIndex = 0;
+            // 
+            // ContactsListBox
+            // 
+            this.ContactsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ContactsListBox.FormattingEnabled = true;
+            this.ContactsListBox.IntegralHeight = false;
+            this.ContactsListBox.Items.AddRange(new object[] {
+            "Агапова Майя Савельевна",
+            "dasda",
+            "Осипов Алексей Даниилович",
+            "Голубева Амина Никитична",
+            "Кожевников Вадим Алексеевич",
+            "Субботин Виктор Романович",
+            "Васильев Мирон Матвеевич",
+            "Орехов Всеволод Артемьевич",
+            "Жукова Вероника Андреевна",
+            "Панова София Матвеевна",
+            "Пономарев Александр Даниэльевич",
+            "Казакова Александра Данииловна",
+            "Мальцева Евгения Алексеевна",
+            "Князева Ульяна Ивановна",
+            "Андреева Ксения Ивановна",
+            "Маслов Кирилл Дмитриевич"});
+            this.ContactsListBox.Location = new System.Drawing.Point(3, 38);
+            this.ContactsListBox.Name = "ContactsListBox";
+            this.ContactsListBox.Size = new System.Drawing.Size(238, 366);
+            this.ContactsListBox.TabIndex = 0;
+            this.ContactsListBox.SelectedIndexChanged += new System.EventHandler(this.ContactsListBox_SelectedIndexChanged);
             // 
             // ButtonsTableLayoutPanel
             // 
@@ -123,6 +153,7 @@
             this.DeleteContactButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.DeleteContactButton.TabIndex = 0;
             this.DeleteContactButton.TabStop = false;
+            this.DeleteContactButton.Click += new System.EventHandler(this.DeleteContactButton_Click);
             this.DeleteContactButton.MouseEnter += new System.EventHandler(this.DeleteContactButton_MouseEnter);
             this.DeleteContactButton.MouseLeave += new System.EventHandler(this.DeleteContactButton_MouseLeave);
             // 
@@ -167,35 +198,6 @@
             this.FindTextBox.Name = "FindTextBox";
             this.FindTextBox.Size = new System.Drawing.Size(204, 20);
             this.FindTextBox.TabIndex = 1;
-            // 
-            // ContactsListBox
-            // 
-            this.ContactsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ContactsListBox.FormattingEnabled = true;
-            this.ContactsListBox.IntegralHeight = false;
-            this.ContactsListBox.Items.AddRange(new object[] {
-            "Агапова Майя Савельевна",
-            "Осипов Алексей Даниилович",
-            "Голубева Амина Никитична",
-            "Кожевников Вадим Алексеевич",
-            "Субботин Виктор Романович",
-            "Васильев Мирон Матвеевич",
-            "Орехов Всеволод Артемьевич",
-            "Жукова Вероника Андреевна",
-            "Панова София Матвеевна",
-            "Пономарев Александр Даниэльевич",
-            "Казакова Александра Данииловна",
-            "Мальцева Евгения Алексеевна",
-            "Князева Ульяна Ивановна",
-            "Андреева Ксения Ивановна",
-            "Маслов Кирилл Дмитриевич"});
-            this.ContactsListBox.Location = new System.Drawing.Point(3, 38);
-            this.ContactsListBox.Name = "ContactsListBox";
-            this.ContactsListBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.ContactsListBox.Size = new System.Drawing.Size(238, 366);
-            this.ContactsListBox.TabIndex = 0;
             // 
             // FullDataPanel
             // 
@@ -395,6 +397,7 @@
             this.KeyPreview = true;
             this.Name = "MainForm";
             this.Text = "ContactsApp";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyUp);
             this.ListBoxTableLayoutPanel.ResumeLayout(false);
             this.ContactsPanel.ResumeLayout(false);

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ContactsApp.Model;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace ContactsApp.View
 {
@@ -23,10 +25,10 @@ namespace ContactsApp.View
         /// </summary>
         
         Random rnd = new Random();
+
         /// <summary>
         /// Метод по обновлению списка контактов
         /// </summary>
-
         private void UpdateListBox()
         {
             ContactsListBox.Items.Clear();
@@ -50,7 +52,7 @@ namespace ContactsApp.View
             var listContact = new List<Contact>();
             int randomContact;
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 5; i++)
             {
                 randomContact = GetRandom(rnd);
                 Contact contact = new Contact(arrFullName[randomContact], arrEmail[randomContact],
@@ -68,6 +70,52 @@ namespace ContactsApp.View
         static int GetRandom(Random rnd)
         {
             return rnd.Next(5);
+        }
+
+        /// <summary>
+        /// Метод удаления контакта из списка
+        /// </summary>
+        /// <param name="index"></param>
+        private void RemoveContact(int index)
+        {
+            if (index == -1) return;
+            
+            DialogResult result = MessageBox.Show(
+                $"Do you really want to remove {_project.Contacts[index].FullName}?",
+                "Delete contact",
+                MessageBoxButtons.OKCancel, 
+                MessageBoxIcon.Question);
+
+            if (result == System.Windows.Forms.DialogResult.OK)
+
+            {
+                _project.Contacts.RemoveAt(index);
+            }
+        }
+
+        /// <summary>
+        /// Метод обновления данных о контакте в правой панели главного окна
+        /// </summary>
+        /// <param name="index"></param>
+        private void UpdateSelectedContact(int index)
+        {
+            FullNameTextBox.Text = _project.Contacts[index].FullName;
+            EmailTextBox.Text = _project.Contacts[index].Email;
+            PhoneNumberTextBox.Text = _project.Contacts[index].PhoneNumber;
+            DateOfBirthTextBox.Text = _project.Contacts[index].DateOfBirth.ToString();
+            VKTextBox.Text = _project.Contacts[index].VkId;
+        }
+
+        /// <summary>
+        /// Метод очистки данных о контакте в правой панели главного окна
+        /// </summary>
+        private void ClearSelectedContact()
+        {
+            FullNameTextBox = null;
+            EmailTextBox = null;    
+            PhoneNumberTextBox = null;
+            DateOfBirthTextBox = null;
+            VKTextBox = null;
         }
 
         public MainForm()
@@ -156,6 +204,36 @@ namespace ContactsApp.View
                 var FormAbout = new AboutForm();
                 FormAbout.ShowDialog();
             }
+        }
+
+        private void DeleteContactButton_Click(object sender, EventArgs e)
+        {
+            RemoveContact(ContactsListBox.SelectedIndex);
+            UpdateListBox();
+        }
+
+        private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ContactsListBox.SelectedIndex == -1)
+            {
+                ClearSelectedContact();
+            }
+            else UpdateSelectedContact(ContactsListBox.SelectedIndex);
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Do you really want to exit?", 
+                "Exit", 
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Environment.Exit(0);
+            }
+
         }
     }
 }
