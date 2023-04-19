@@ -49,7 +49,7 @@ namespace ContactsApp.Model
                 }
                 set
                 {
-                    if (value.ToString().Length >=100)
+                    if (value.Length >=100)
                     {
                         throw new ArgumentException($"Contact's full name must be less than {_fullName.Length}");
                     }
@@ -152,10 +152,14 @@ namespace ContactsApp.Model
                 VkId = vkId;
             }
 
-            ///  <summary>
-            /// Клонирует экзмепляр класса
-            /// </summary>
-            public object Clone()
+        public Contact()
+        {
+        }
+
+        ///  <summary>
+        /// Клонирует экзмепляр класса
+        /// </summary>
+        public object Clone()
             {
                 return MemberwiseClone();
             }

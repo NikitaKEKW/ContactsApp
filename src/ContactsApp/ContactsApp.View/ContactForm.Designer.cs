@@ -118,6 +118,7 @@
             this.DateOfBirthTimePicker.Size = new System.Drawing.Size(197, 20);
             this.DateOfBirthTimePicker.TabIndex = 12;
             this.DateOfBirthTimePicker.Value = new System.DateTime(2000, 3, 6, 0, 0, 0, 0);
+            this.DateOfBirthTimePicker.ValueChanged += new System.EventHandler(this.DateOfBirthTimePicker_ValueChanged);
             // 
             // VKTextBox
             // 
@@ -125,6 +126,7 @@
             this.VKTextBox.Name = "VKTextBox";
             this.VKTextBox.Size = new System.Drawing.Size(197, 20);
             this.VKTextBox.TabIndex = 11;
+            this.VKTextBox.TextChanged += new System.EventHandler(this.VKTextBox_TextChanged);
             // 
             // VKLabel
             // 
@@ -151,6 +153,7 @@
             this.PhoneNumberTextBox.Size = new System.Drawing.Size(197, 20);
             this.PhoneNumberTextBox.TabIndex = 7;
             this.PhoneNumberTextBox.Text = "+7 (999) 654-22-13";
+            this.PhoneNumberTextBox.TextChanged += new System.EventHandler(this.PhoneNumberTextBox_TextChanged);
             // 
             // PhoneNumberLabel
             // 
@@ -168,6 +171,7 @@
             this.EmailTextBox.Size = new System.Drawing.Size(376, 20);
             this.EmailTextBox.TabIndex = 5;
             this.EmailTextBox.Text = "osipov@no.mail";
+            this.EmailTextBox.TextChanged += new System.EventHandler(this.EmailTextBox_TextChanged);
             // 
             // EmailLabel
             // 
@@ -185,6 +189,7 @@
             this.FullNameTextBox.Size = new System.Drawing.Size(376, 20);
             this.FullNameTextBox.TabIndex = 3;
             this.FullNameTextBox.Text = "Осипов Алексей Даниилович";
+            this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
             // FullNameLabel
             // 
