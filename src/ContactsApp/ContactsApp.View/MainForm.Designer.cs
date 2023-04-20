@@ -104,7 +104,6 @@
             this.ContactsListBox.IntegralHeight = false;
             this.ContactsListBox.Items.AddRange(new object[] {
             "Агапова Майя Савельевна",
-            "dasda",
             "Осипов Алексей Даниилович",
             "Голубева Амина Никитична",
             "Кожевников Вадим Алексеевич",

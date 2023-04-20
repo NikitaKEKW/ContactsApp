@@ -51,7 +51,7 @@ namespace ContactsApp.Model
                 {
                     if (value.Length >=100)
                     {
-                        throw new ArgumentException($"Contact's full name must be less than {_fullName.Length}");
+                        throw new ArgumentException($"Contact's full name must be less than {value.Length}");
                     }
                          TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
                         _fullName = ti.ToTitleCase(value).ToString();
@@ -69,9 +69,9 @@ namespace ContactsApp.Model
                 }
                 set
                 {
-                    if (value.ToString().Length >= 100)
+                    if (value.Length >= 100)
                     {
-                        throw new ArgumentException($"Contact's email must be less than {_email.Length}");
+                        throw new ArgumentException($"Contact's email must be less than {value.Length}");
                     }
                     _email = value;
                 }
@@ -89,7 +89,7 @@ namespace ContactsApp.Model
                 set
                 {
                    string PhoneNumberValidation = @"^((\+7|7|8)[\(]?(\d{3})[\)]?\d{3}[-]?(\d{2}[-]?\d{2}))$";
-                   if(!Regex.IsMatch(value.ToString(), PhoneNumberValidation))
+                   if(!Regex.IsMatch(value, PhoneNumberValidation))
                    {
                         throw new ArgumentException($"The phone number contains an invalid character.");
                    }
@@ -108,10 +108,11 @@ namespace ContactsApp.Model
                 }
                 set
                 {
-                    if (_dateOfBirth.Year <= 1900 && _dateOfBirth.Year >= DateTime.Now.Year)
+                    if (value.Year <= 1900 || value > DateTime.Now)
                     {
-                        throw new ArgumentException($"Incorrect year" + $"Year was {_dateOfBirth.Year}");
+                        throw new ArgumentException($"Incorrect year. " +  $"Year must be less or more than ${value}");
                     }
+                   
                     _dateOfBirth = value;
                 }
             }
@@ -127,9 +128,9 @@ namespace ContactsApp.Model
                 }
                 set
                 {
-                    if (value.ToString().Length >= 50)
+                    if (value.Length >= 50)
                     {
-                        throw new ArgumentException($"Contact's Vk ID must be less than {_vkId.Length}");
+                        throw new ArgumentException($"Contact's Vk ID must be less than {value.Length}");
                     }
                     _vkId = value;
                 }
@@ -152,6 +153,9 @@ namespace ContactsApp.Model
                 VkId = vkId;
             }
 
+        /// <summary>
+        ///  Создает пустой экземпляр <see cref="Contact">
+        /// </summary>
         public Contact()
         {
         }

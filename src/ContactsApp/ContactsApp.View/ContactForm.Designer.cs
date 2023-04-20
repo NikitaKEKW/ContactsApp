@@ -113,6 +113,7 @@
             // 
             // DateOfBirthTimePicker
             // 
+            this.DateOfBirthTimePicker.CalendarMonthBackground = System.Drawing.SystemColors.Control;
             this.DateOfBirthTimePicker.Location = new System.Drawing.Point(121, 191);
             this.DateOfBirthTimePicker.Name = "DateOfBirthTimePicker";
             this.DateOfBirthTimePicker.Size = new System.Drawing.Size(197, 20);

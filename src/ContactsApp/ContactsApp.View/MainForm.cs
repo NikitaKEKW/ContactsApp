@@ -45,7 +45,7 @@ namespace ContactsApp.View
             _project = new Project();
             string[] arrFullName = { "Данилик", "Зорин", "ПетруШкин", "Кочетов", "Гаврилов" };
             string[] arrEmail = { "dannl@no.mail", "zordl@no.mail", "petsp@no.mail", "kochid@no.mail", "gavdv@no.mail" };
-            string[] arrPhoneNumber = { "89684566545", "896321459656", "89874562541", "89521234567", "89329516784" };
+            string[] arrPhoneNumber = { "8(968)456-65-45", "89632145965", "89874562541", "89521234567", "89329516784" };
             string[] arrVkId = { "@id123654", "@myid", "@id123089", "@id1337228", "@qwerty" };
 
             var listContact = new List<Contact>();
@@ -55,7 +55,7 @@ namespace ContactsApp.View
             {
                 randomContact = GetRandom(rnd);
                 Contact contact = new Contact(arrFullName[randomContact], arrEmail[randomContact],
-                    arrPhoneNumber[randomContact], DateTime.Now, arrVkId[randomContact]);
+                arrPhoneNumber[randomContact], DateTime.Now, arrVkId[randomContact]);
                 listContact.Add(contact);
                 _project.Contacts.Add(contact);
             }
