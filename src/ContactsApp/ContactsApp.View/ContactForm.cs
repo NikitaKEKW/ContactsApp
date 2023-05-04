@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics.Contracts;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ContactsApp.Model;
 
@@ -17,7 +11,17 @@ namespace ContactsApp.View
         /// <summary>
         /// поле класса Contact
         /// </summary>
-        private Contact _contact = new Contact();
+        private Contact _contact = new Contact("","","89680695926",new DateTime(2000, 3, 6),"");
+
+        public Contact Contact
+        {
+            get => _contact;
+            set
+            {
+                _contact = value;
+                UpdateForm();
+            }
+        }
 
         /// <summary>
         /// текствое поле ошибки FullName
@@ -45,11 +49,6 @@ namespace ContactsApp.View
         private string _vkIdError;
 
         /// <summary>
-        /// строковое поле с ошибками формы
-        /// </summary>
-        private string _validationError;
-
-        /// <summary>
         /// Метод по обновлению данных на форме
         /// </summary>
         private void UpdateForm()
@@ -67,13 +66,13 @@ namespace ContactsApp.View
         /// <returns></returns>
         private bool CheckFormOnErrors()
         {
-            _validationError += _fullNameError;
-            _validationError += _emailError;
-            _validationError += _phoneNumberError;
-            _validationError += _dateOfBirthError;
-            _validationError += _vkIdError;
-
-            if (_fullNameError!= null )
+            string strError = null;
+            strError += _fullNameError;
+            strError += _emailError;
+            strError += _phoneNumberError;
+            strError += _dateOfBirthError;
+            strError += _vkIdError;
+            if (strError != null && strError != "")
             {
                 MessageBox.Show($"{_fullNameError}\n{_emailError}\n{_phoneNumberError}\n{_dateOfBirthError}\n{_vkIdError}",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -85,20 +84,126 @@ namespace ContactsApp.View
         /// <summary>
         /// Метод обновления информации о контакте
         /// </summary>
-         private void UpdateContact()
+        private void UpdateContact()
         {
             _contact.FullName = FullNameTextBox.Text;
             _contact.Email = EmailTextBox.Text;
             _contact.PhoneNumber = PhoneNumberTextBox.Text;
-            _contact.DateOfBirth= DateOfBirthTimePicker.Value;
+            _contact.DateOfBirth = DateOfBirthTimePicker.Value;
             _contact.VkId = VKTextBox.Text;
+        }
+
+        /// <summary>
+        /// Валидация данных FullName
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="ArgumentException"></exception>
+        private void FullNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _contact.FullName = FullNameTextBox.Text;
+                _fullNameError = null;
+                FullNameTextBox.BackColor = Color.White;
+            }
+            catch (Exception ex)
+            {
+                _fullNameError = ex.Message;
+                FullNameTextBox.BackColor = Color.LightPink;
+                throw new ArgumentException(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Валидация данных email
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="ArgumentException"></exception>
+        private void EmailTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _contact.Email = EmailTextBox.Text;
+                _emailError = null;
+                EmailTextBox.BackColor = Color.White;
+            }
+            catch (Exception ex)
+            {
+                _emailError = ex.Message;
+                EmailTextBox.BackColor = Color.LightPink;
+                throw new ArgumentException(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Валидация данных PhoneNumber
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="ArgumentException"></exception>
+        private void PhoneNumberTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _phoneNumberError = null;
+                _contact.PhoneNumber = PhoneNumberTextBox.Text;
+                PhoneNumberTextBox.BackColor = Color.White;
+            }
+            catch (Exception ex)
+            {
+                _phoneNumberError = ex.Message;
+                PhoneNumberTextBox.BackColor = Color.LightPink;
+                throw new ArgumentException(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Валидация данных DateOfBirth
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="ArgumentException"></exception>
+        private void DateOfBirthTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _contact.DateOfBirth = DateOfBirthTimePicker.Value;
+                _dateOfBirthError = null;
+            }
+            catch (Exception ex)
+            {
+                _dateOfBirthError = ex.Message;
+                throw new ArgumentException(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Валидация данных VkID
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="ArgumentException"></exception>
+        private void VKTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _contact.VkId = VKTextBox.Text;
+                _vkIdError = null;
+                VKTextBox.BackColor = Color.White;
+            }
+            catch (Exception ex)
+            {
+                _vkIdError = ex.Message;
+                VKTextBox.BackColor = Color.LightPink;
+                throw new ArgumentException(ex.Message);
+            }
         }
 
         public ContactForm()
         {
             InitializeComponent();
-            _contact.DateOfBirth = new DateTime(2002, 3, 6);
-            _contact.PhoneNumber = "79680695926";
             UpdateForm();
         }
 
@@ -119,92 +224,17 @@ namespace ContactsApp.View
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            CheckFormOnErrors();
-            UpdateContact();
-        }
-
-        private void FullNameTextBox_TextChanged(object sender, EventArgs e)
-        {
-            try
+            bool ErrorsInContactForm = CheckFormOnErrors();
+            if (ErrorsInContactForm == true)
             {
-                _fullNameError = null;
-                _contact.FullName = FullNameTextBox.Text;
-                FullNameTextBox.BackColor = Color.White;
+                DialogResult = DialogResult.OK;
+                UpdateContact();
+                this.Close();
             }
-            catch (Exception ex)
+            else if (ErrorsInContactForm == false)
             {
-                _fullNameError = ex.Message;
-                FullNameTextBox.BackColor = Color.LightPink;
-                throw new ArgumentException(_fullNameError);
+                DialogResult = DialogResult.Ignore;
             }
         }
-
-        private void EmailTextBox_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                _emailError = null;
-                _contact.Email = EmailTextBox.Text;
-                EmailTextBox.BackColor = Color.White;
-            }
-            catch (Exception ex)
-            {
-                _emailError = ex.Message;
-                EmailTextBox.BackColor = Color.LightPink;
-                throw new ArgumentException(_emailError);
-            }
-
-        }
-
-        private void PhoneNumberTextBox_TextChanged(object sender, EventArgs e)
-        {
-               try
-               {
-                   _phoneNumberError = null;
-                   _contact.PhoneNumber = PhoneNumberTextBox.Text;
-                   PhoneNumberTextBox.BackColor = Color.White;
-                }
-               catch (Exception ex)
-               {
-                   _phoneNumberError = ex.Message;
-                   PhoneNumberTextBox.BackColor = Color.LightPink;
-                   throw new ArgumentException(_phoneNumberError);
-                }
-
-        }
-
-        private void DateOfBirthTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                _dateOfBirthError = null;
-                _contact.DateOfBirth = DateOfBirthTimePicker.Value;
-
-            }
-            catch (Exception ex)
-            {
-                _dateOfBirthError = ex.Message;
-                throw new ArgumentException(_dateOfBirthError);
-            }
-
-        }
-
-        private void VKTextBox_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                _vkIdError = null;
-                _contact.VkId = VKTextBox.Text;
-                VKTextBox.BackColor = Color.White;
-            }
-            catch (Exception ex)
-            {
-                _vkIdError = ex.Message;
-                VKTextBox.BackColor = Color.LightPink;
-                throw new ArgumentException(_vkIdError);
-            }
-
-        }
-
     }
- }
+}

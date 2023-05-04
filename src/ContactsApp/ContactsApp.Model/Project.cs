@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactsApp.Model
 {
@@ -15,7 +12,7 @@ namespace ContactsApp.Model
         /// <summary>
         /// Возвращает или задает список контактов
         /// </summary>
-        public List<Contact> Contacts  = new List<Contact>();
+        public List<Contact> Contacts { get; set; } = new List<Contact>();
 
         /// <summary>
         /// Возвращает отсортированный список контактов
@@ -24,12 +21,10 @@ namespace ContactsApp.Model
         /// <returns></returns>
         public List<Contact> SortContactsByFullName(List<Contact> contact)
         {
-            var selectedContact = from p in contact
-            orderby p.FullName
-            select p.FullName;
-            return (List<Contact>)selectedContact;
+            var orderByContact = contact.OrderBy(contacts => contacts.FullName).ToList();
+            return orderByContact;
         }
-        
+
         /// <summary>
         /// Возвращает список именниников
         /// </summary>
@@ -38,22 +33,20 @@ namespace ContactsApp.Model
         public List<Contact> FindBirthdaysToday(List<Contact> contact)
         {
             var selectedContact = from p in contact
-            where p.DateOfBirth == DateTime.Now
-            select p;
+                                  where p.DateOfBirth == DateTime.Now
+                                  select p;
             return (List<Contact>)selectedContact;
         }
 
         /// <summary>
-        /// Возвращает контакты найденные по подстроке
+        /// Возвращает список контактов найденных по подстроке
         /// </summary>
         /// <param name="contact"></param>
+        /// <param name="contactName"></param>
         /// <returns></returns>
-        public List<Contact> FindContants(List<Contact> contact)
+        public List<Contact> FindContaсts(List<Contact> contact, string contactName)
         {
-            string contactToFind = "Данилик";
-            var selectedContact = from p in contact
-            where p.FullName == contactToFind
-            select p;
+            var selectedContact = contact.Where(contacts =>contacts.FullName.Contains(contactName)).ToList();
             return (List<Contact>)selectedContact;
         }
     }

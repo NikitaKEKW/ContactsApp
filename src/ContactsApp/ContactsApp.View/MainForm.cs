@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ContactsApp.Model;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace ContactsApp.View
 {
@@ -18,12 +10,14 @@ namespace ContactsApp.View
         /// <summary>
         /// Поле класса Prohect
         /// </summary>
-        private Project _project;
+        private Project _project = new Project();
 
-        /// <summary>
-        /// Создание объекта для генерации чисел 
-        /// </summary>
-        Random rnd = new Random();
+        private Random rng = new Random();
+
+        static int GenerateDigit(Random rng)
+        {
+            return rng.Next(5);
+        }
 
         /// <summary>
         /// Метод по обновлению списка контактов
@@ -42,33 +36,32 @@ namespace ContactsApp.View
         /// </summary>
         private void AddContact()
         {
+            var addForm = new ContactForm();
+            addForm.ShowDialog();
+            var updatedData = addForm.Contact;
+            if (addForm.DialogResult == DialogResult.OK)
+            {
+                _project.Contacts.Add(updatedData);
+            }
+        }
+        private void AddRandomContacts()
+        {
             _project = new Project();
             string[] arrFullName = { "Данилик", "Зорин", "ПетруШкин", "Кочетов", "Гаврилов" };
             string[] arrEmail = { "dannl@no.mail", "zordl@no.mail", "petsp@no.mail", "kochid@no.mail", "gavdv@no.mail" };
             string[] arrPhoneNumber = { "8(968)456-65-45", "89632145965", "89874562541", "89521234567", "89329516784" };
             string[] arrVkId = { "@id123654", "@myid", "@id123089", "@id1337228", "@qwerty" };
 
-            var listContact = new List<Contact>();
             int randomContact;
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 6; i++)
             {
-                randomContact = GetRandom(rnd);
+                randomContact = GenerateDigit(rng);
                 Contact contact = new Contact(arrFullName[randomContact], arrEmail[randomContact],
-                arrPhoneNumber[randomContact], DateTime.Now, arrVkId[randomContact]);
-                listContact.Add(contact);
+                    arrPhoneNumber[randomContact], DateTime.Today, arrVkId[randomContact]);
+
                 _project.Contacts.Add(contact);
             }
-        }
-
-        /// <summary>
-        /// Метод генерации рандомного числа
-        /// </summary>
-        /// <param name="rnd"></param>
-        /// <returns></returns>
-        static int GetRandom(Random rnd)
-        {
-            return rnd.Next(5);
         }
 
         /// <summary>
@@ -77,16 +70,16 @@ namespace ContactsApp.View
         /// <param name="index"></param>
         private void RemoveContact(int index)
         {
-            if (index == -1) return;
-            
+            if (index == -1)
+            {
+                return;
+            }
             DialogResult result = MessageBox.Show(
                 $"Do you really want to remove {_project.Contacts[index].FullName}?",
                 "Delete contact",
                 MessageBoxButtons.OKCancel, 
                 MessageBoxIcon.Question);
-
-            if (result == System.Windows.Forms.DialogResult.OK)
-
+            if (result == DialogResult.OK)
             {
                 _project.Contacts.RemoveAt(index);
             }
@@ -98,11 +91,12 @@ namespace ContactsApp.View
         /// <param name="index"></param>
         private void UpdateSelectedContact(int index)
         {
-            FullNameTextBox.Text = _project.Contacts[index].FullName;
-            EmailTextBox.Text = _project.Contacts[index].Email;
-            PhoneNumberTextBox.Text = _project.Contacts[index].PhoneNumber;
-            DateOfBirthTextBox.Text = _project.Contacts[index].DateOfBirth.ToString();
-            VKTextBox.Text = _project.Contacts[index].VkId;
+            Contact contactValue = _project.Contacts[index];
+            FullNameTextBox.Text = contactValue.FullName;
+            EmailTextBox.Text = contactValue.Email;
+            PhoneNumberTextBox.Text = contactValue.PhoneNumber;
+            DateOfBirthTextBox.Text = contactValue.DateOfBirth.ToString();
+            VKTextBox.Text = contactValue.VkId;
         }
 
         /// <summary>
@@ -110,16 +104,45 @@ namespace ContactsApp.View
         /// </summary>
         private void ClearSelectedContact()
         {
-            FullNameTextBox = null;
-            EmailTextBox = null;    
-            PhoneNumberTextBox = null;
-            DateOfBirthTextBox = null;
-            VKTextBox = null;
+            FullNameTextBox.Text = "";
+            EmailTextBox.Text = "";    
+            PhoneNumberTextBox.Text = "";
+            DateOfBirthTextBox.Text = "";  
+            VKTextBox.Text = "";
         }
 
-        public MainForm()
+        private void DeleteContactButton_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
+            RemoveContact(ContactsListBox.SelectedIndex);
+            ClearSelectedContact();
+            UpdateListBox();
+        }
+
+        private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ContactsListBox.SelectedIndex == -1)
+            {
+                ClearSelectedContact();
+            }
+            else UpdateSelectedContact(ContactsListBox.SelectedIndex);
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Do you really want to exit?",
+                "Exit",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Environment.Exit(0);
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
         
         private void AddContactButton_Click(object sender, EventArgs e)
@@ -128,6 +151,11 @@ namespace ContactsApp.View
             UpdateListBox();
             var form = new ContactForm();
             form.ShowDialog();
+        }
+
+        public MainForm()
+        {
+            InitializeComponent();
         }
 
         private void AddContactButton_MouseEnter(object sender, EventArgs e)
@@ -205,37 +233,10 @@ namespace ContactsApp.View
             }
         }
 
-        private void DeleteContactButton_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            RemoveContact(ContactsListBox.SelectedIndex);
+            AddRandomContacts();
             UpdateListBox();
-        }
-
-        private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ContactsListBox.SelectedIndex == -1)
-            {
-                ClearSelectedContact();
-            }
-            else UpdateSelectedContact(ContactsListBox.SelectedIndex);
-        }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DialogResult result = MessageBox.Show(
-                "Do you really want to exit?", 
-                "Exit", 
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                Environment.Exit(0);
-            }
-            else
-            {
-                e.Cancel = true;
-            }
         }
     }
 }
