@@ -12,13 +12,6 @@ namespace ContactsApp.View
         /// </summary>
         private Project _project = new Project();
 
-        private Random rng = new Random();
-
-        static int GenerateDigit(Random rng)
-        {
-            return rng.Next(5);
-        }
-
         /// <summary>
         /// Метод по обновлению списка контактов
         /// </summary>
@@ -44,25 +37,7 @@ namespace ContactsApp.View
                 _project.Contacts.Add(updatedData);
             }
         }
-        private void AddRandomContacts()
-        {
-            _project = new Project();
-            string[] arrFullName = { "Данилик", "Зорин", "ПетруШкин", "Кочетов", "Гаврилов" };
-            string[] arrEmail = { "dannl@no.mail", "zordl@no.mail", "petsp@no.mail", "kochid@no.mail", "gavdv@no.mail" };
-            string[] arrPhoneNumber = { "8(968)456-65-45", "89632145965", "89874562541", "89521234567", "89329516784" };
-            string[] arrVkId = { "@id123654", "@myid", "@id123089", "@id1337228", "@qwerty" };
 
-            int randomContact;
-
-            for (int i = 0; i < 6; i++)
-            {
-                randomContact = GenerateDigit(rng);
-                Contact contact = new Contact(arrFullName[randomContact], arrEmail[randomContact],
-                    arrPhoneNumber[randomContact], DateTime.Today, arrVkId[randomContact]);
-
-                _project.Contacts.Add(contact);
-            }
-        }
 
         /// <summary>
         /// Метод удаления контакта из списка
@@ -231,12 +206,6 @@ namespace ContactsApp.View
                 var FormAbout = new AboutForm();
                 FormAbout.ShowDialog();
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            AddRandomContacts();
-            UpdateListBox();
         }
     }
 }
