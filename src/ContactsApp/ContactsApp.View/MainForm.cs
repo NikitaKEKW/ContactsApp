@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using ContactsApp.Model;
 
 namespace ContactsApp.View
@@ -11,13 +13,6 @@ namespace ContactsApp.View
         /// Поле класса Prohect
         /// </summary>
         private Project _project = new Project();
-
-        private Random rng = new Random();
-
-        static int GenerateDigit(Random rng)
-        {
-            return rng.Next(5);
-        }
 
         /// <summary>
         /// Метод по обновлению списка контактов
@@ -44,23 +39,23 @@ namespace ContactsApp.View
                 _project.Contacts.Add(updatedData);
             }
         }
-        private void AddRandomContacts()
+
+        private void EditContact(int index)
         {
-            _project = new Project();
-            string[] arrFullName = { "Данилик", "Зорин", "ПетруШкин", "Кочетов", "Гаврилов" };
-            string[] arrEmail = { "dannl@no.mail", "zordl@no.mail", "petsp@no.mail", "kochid@no.mail", "gavdv@no.mail" };
-            string[] arrPhoneNumber = { "8(968)456-65-45", "89632145965", "89874562541", "89521234567", "89329516784" };
-            string[] arrVkId = { "@id123654", "@myid", "@id123089", "@id1337228", "@qwerty" };
-
-            int randomContact;
-
-            for (int i = 0; i < 6; i++)
+            var cloneContact = (Contact)_project.Contacts[index].Clone();
+            var editForm = new ContactForm();
+            editForm.Contact = cloneContact;
+            editForm.ShowDialog();
+            if (editForm.DialogResult == DialogResult.OK)
             {
-                randomContact = GenerateDigit(rng);
-                Contact contact = new Contact(arrFullName[randomContact], arrEmail[randomContact],
-                    arrPhoneNumber[randomContact], DateTime.Today, arrVkId[randomContact]);
-
-                _project.Contacts.Add(contact);
+                var updatedData = editForm.Contact;
+                ContactsListBox.Items.RemoveAt(index);
+                _project.Contacts.RemoveAt(index);
+                _project.Contacts.Insert(index, updatedData);
+            }
+            else if (editForm.DialogResult == DialogResult.Cancel) 
+            { 
+                return; 
             }
         }
 
@@ -149,8 +144,11 @@ namespace ContactsApp.View
         {
             AddContact();
             UpdateListBox();
-            var form = new ContactForm();
-            form.ShowDialog();
+        }
+        private void EditContactButton_Click(object sender, EventArgs e)
+        {
+            EditContact(ContactsListBox.SelectedIndex);
+            UpdateListBox();
         }
 
         public MainForm()
@@ -231,12 +229,6 @@ namespace ContactsApp.View
                 var FormAbout = new AboutForm();
                 FormAbout.ShowDialog();
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            AddRandomContacts();
-            UpdateListBox();
         }
     }
 }

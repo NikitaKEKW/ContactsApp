@@ -55,7 +55,6 @@
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.PhotoPictureBox = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.ListBoxTableLayoutPanel.SuspendLayout();
             this.ContactsPanel.SuspendLayout();
             this.ButtonsTableLayoutPanel.SuspendLayout();
@@ -166,7 +165,7 @@
             this.EditContactButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.EditContactButton.TabIndex = 1;
             this.EditContactButton.TabStop = false;
-            this.EditContactButton.Click += new System.EventHandler(this.AddContactButton_Click);
+            this.EditContactButton.Click += new System.EventHandler(this.EditContactButton_Click);
             this.EditContactButton.MouseEnter += new System.EventHandler(this.EditContactButton_MouseEnter);
             this.EditContactButton.MouseLeave += new System.EventHandler(this.EditContactButton_MouseLeave);
             // 
@@ -204,7 +203,6 @@
             this.FullDataPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.FullDataPanel.Controls.Add(this.button1);
             this.FullDataPanel.Controls.Add(this.BirthdayPanel);
             this.FullDataPanel.Controls.Add(this.VKTextBox);
             this.FullDataPanel.Controls.Add(this.VKLabel);
@@ -387,16 +385,6 @@
             this.PhotoPictureBox.TabIndex = 1;
             this.PhotoPictureBox.TabStop = false;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(87, 325);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -455,7 +443,6 @@
         private System.Windows.Forms.PictureBox EditContactButton;
         private System.Windows.Forms.PictureBox AddContactButton;
         private System.Windows.Forms.TextBox FindTextBox;
-        private System.Windows.Forms.Button button1;
     }
 }
 
