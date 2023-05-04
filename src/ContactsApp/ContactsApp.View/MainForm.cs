@@ -145,6 +145,7 @@ namespace ContactsApp.View
             AddContact();
             UpdateListBox();
         }
+
         private void EditContactButton_Click(object sender, EventArgs e)
         {
             EditContact(ContactsListBox.SelectedIndex);
