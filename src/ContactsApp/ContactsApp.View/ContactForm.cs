@@ -11,7 +11,7 @@ namespace ContactsApp.View
         /// <summary>
         /// поле класса Contact
         /// </summary>
-        private Contact _contact = new Contact("","","89680695926",new DateTime(2000, 3, 6),"");
+        private Contact _contact = new Contact("", "", "89680695926", new DateTime(2000, 3, 6), "");
 
         public Contact Contact
         {
@@ -51,6 +51,14 @@ namespace ContactsApp.View
         /// <summary>
         /// Метод по обновлению данных на форме
         /// </summary>
+
+        public ContactForm()
+        {
+            InitializeComponent();
+            UpdateForm();
+        }
+
+
         private void UpdateForm()
         {
             FullNameTextBox.Text = _contact.FullName;
@@ -201,12 +209,6 @@ namespace ContactsApp.View
             }
         }
 
-        public ContactForm()
-        {
-            InitializeComponent();
-            UpdateForm();
-        }
-
         private void AddPhotoButton_MouseLeave(object sender, EventArgs e)
         {
             AddPhotoButton.Image = Properties.Resources.add_photo_32x32_gray;
@@ -219,21 +221,17 @@ namespace ContactsApp.View
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult = DialogResult.Cancel;
         }
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            bool ErrorsInContactForm = CheckFormOnErrors();
-            if (ErrorsInContactForm == true)
+            bool a = CheckFormOnErrors();
+            if (a)
             {
-                DialogResult = DialogResult.OK;
                 UpdateContact();
+                DialogResult = DialogResult.OK;
                 this.Close();
-            }
-            else if (ErrorsInContactForm == false)
-            {
-                DialogResult = DialogResult.Ignore;
             }
         }
     }

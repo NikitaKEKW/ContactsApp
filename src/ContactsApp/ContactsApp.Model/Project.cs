@@ -30,12 +30,11 @@ namespace ContactsApp.Model
         /// </summary>
         /// <param name="contact"></param>
         /// <returns></returns>
-        public List<Contact> FindBirthdaysToday(List<Contact> contact)
+		public List<Contact> FindBirthdayContacts(List<Contact> contact)
         {
-            var selectedContact = from p in contact
-                                  where p.DateOfBirth == DateTime.Now
-                                  select p;
-            return (List<Contact>)selectedContact;
+            var birthdayContacts =contact.Where(contacts => contacts.DateOfBirth.Day == DateTime.Today.Day
+            && contacts.DateOfBirth.Month == DateTime.Today.Month).ToList();
+            return birthdayContacts;
         }
 
         /// <summary>

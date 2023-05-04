@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using ContactsApp.Model;
 
 namespace ContactsApp.View
@@ -38,6 +40,24 @@ namespace ContactsApp.View
             }
         }
 
+        private void EditContact(int index)
+        {
+            var cloneContact = (Contact)_project.Contacts[index].Clone();
+            var editForm = new ContactForm();
+            editForm.Contact = cloneContact;
+            editForm.ShowDialog();
+            if (editForm.DialogResult == DialogResult.OK)
+            {
+                var updatedData = editForm.Contact;
+                ContactsListBox.Items.RemoveAt(index);
+                _project.Contacts.RemoveAt(index);
+                _project.Contacts.Insert(index, updatedData);
+            }
+            else if (editForm.DialogResult == DialogResult.Cancel) 
+            { 
+                return; 
+            }
+        }
 
         /// <summary>
         /// Метод удаления контакта из списка
@@ -124,8 +144,11 @@ namespace ContactsApp.View
         {
             AddContact();
             UpdateListBox();
-            var form = new ContactForm();
-            form.ShowDialog();
+        }
+        private void EditContactButton_Click(object sender, EventArgs e)
+        {
+            EditContact(ContactsListBox.SelectedIndex);
+            UpdateListBox();
         }
 
         public MainForm()
