@@ -97,7 +97,7 @@ namespace ContactsApp.Model
                 {
                     throw new ArgumentException(
                         $"The phone number entered incorrectly.\nFor example you need to enter:\n"
-                        + $"8(968)069-59-26\n" + $"89680695926\n" + $"+79680695926" );
+                        + $"8(968)069-59-26\n" + $"89680695926\n" + $"+79680695926");
                 }
                 _phoneNumber = value;
             }

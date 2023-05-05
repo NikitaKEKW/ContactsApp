@@ -13,6 +13,9 @@ namespace ContactsApp.View
         /// </summary>
         private Contact _contact = new Contact("", "", "89680695926", new DateTime(2000, 3, 6), "");
 
+        /// <summary>
+        /// Установка и получение экземпляра
+        /// </summary>
         public Contact Contact
         {
             get => _contact;
@@ -48,17 +51,15 @@ namespace ContactsApp.View
         /// </summary>
         private string _vkIdError;
 
-        /// <summary>
-        /// Метод по обновлению данных на форме
-        /// </summary>
-
         public ContactForm()
         {
             InitializeComponent();
             UpdateForm();
         }
 
-
+        /// <summary>
+        /// Метод по обновлению данных на форме
+        /// </summary>
         private void UpdateForm()
         {
             FullNameTextBox.Text = _contact.FullName;
@@ -74,13 +75,13 @@ namespace ContactsApp.View
         /// <returns></returns>
         private bool CheckFormOnErrors()
         {
-            string strError = null;
-            strError += _fullNameError;
-            strError += _emailError;
-            strError += _phoneNumberError;
-            strError += _dateOfBirthError;
-            strError += _vkIdError;
-            if (strError != null && strError != "")
+            string _validationError = null;
+            _validationError += _fullNameError;
+            _validationError += _emailError;
+            _validationError += _phoneNumberError;
+            _validationError += _dateOfBirthError;
+            _validationError += _vkIdError;
+            if (_validationError != null && _validationError != "")
             {
                 MessageBox.Show($"{_fullNameError}\n{_emailError}\n{_phoneNumberError}\n{_dateOfBirthError}\n{_vkIdError}",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -226,8 +227,8 @@ namespace ContactsApp.View
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            bool a = CheckFormOnErrors();
-            if (a)
+            bool CheckError = CheckFormOnErrors();
+            if (CheckError)
             {
                 UpdateContact();
                 DialogResult = DialogResult.OK;

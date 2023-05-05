@@ -53,11 +53,6 @@ namespace ContactsApp.Model
             "d2mc@outlook.com", "06lk@mail.ru", "emhzysf2@yandex.ru", "d1w28lkg@yandex.ru" };
 
         /// <summary>
-        /// Массив дней рождений
-        /// </summary>
-        private static string[] _arrDateOfBirth = { };
-
-        /// <summary>
         /// Массив мобильных телефонов
         /// </summary>
         private static string[] _arrPhoneNumber = {"+7(968)069-59-58", "+7(968)069-59-57", "+7(968)069-59-56",
@@ -81,9 +76,9 @@ namespace ContactsApp.Model
         /// <param name="_rnd"></param>
         /// <param name="lengthOfArray"></param>
         /// <returns></returns>
-        private static int GenerateDigit(Random _rnd, int lengthOfArray)
+        private static int GenerateDigit(Random _random, int lengthOfArray)
         {
-            return _rnd.Next(lengthOfArray);
+            return _random.Next(lengthOfArray);
         }
 
         /// <summary>
@@ -92,28 +87,28 @@ namespace ContactsApp.Model
         /// <param name="_rnd"></param>
         /// <param name="project"></param>
         /// <returns></returns>
-        public static List<Contact> GenerateRandomContactsName(Random _rnd, Project project)
+        public static List<Contact> GenerateRandomContactsName(Random _random, Project project)
         {
             for (int i = 0; i <= 10; i++)
             {
-                _fullName[i] = _arrMaleSurname[GenerateDigit(_rnd, _arrMaleSurname.Length)] + " " +
-                _arrMaleName[GenerateDigit(_rnd, _arrMaleName.Length)] + " "
-                + _arrMalePatronymic[GenerateDigit(_rnd, _arrMalePatronymic.Length)];
+                _fullName[i] = _arrMaleSurname[GenerateDigit(_random, _arrMaleSurname.Length)] + " " +
+                _arrMaleName[GenerateDigit(_random, _arrMaleName.Length)] + " "
+                + _arrMalePatronymic[GenerateDigit(_random, _arrMalePatronymic.Length)];
 
             }
             for (int i = 11; i < 20; i++)
             {
-                _fullName[i] = _arrFemaleSurname[GenerateDigit(_rnd, _arrFemaleSurname.Length)] + " " +
-                _arrFemaleName[GenerateDigit(_rnd, _arrFemaleName.Length)] + " "
-                + _arrFemalePatronymic[GenerateDigit(_rnd, _arrFemalePatronymic.Length)];
+                _fullName[i] = _arrFemaleSurname[GenerateDigit(_random, _arrFemaleSurname.Length)] + " " +
+                _arrFemaleName[GenerateDigit(_random, _arrFemaleName.Length)] + " "
+                + _arrFemalePatronymic[GenerateDigit(_random, _arrFemalePatronymic.Length)];
 
             }
             for (int i = 0; i < 20; i++)
-            {
-                Contact contact = new Contact(_fullName[GenerateDigit(_rnd, _fullName.Length)],
-                _arrEmail[GenerateDigit(_rnd, _arrEmail.Length)],
-                _arrPhoneNumber[GenerateDigit(_rnd, _arrPhoneNumber.Length)], DateTime.Today,
-                _arrIDVk[GenerateDigit(_rnd, _arrIDVk.Length)]);
+            {   
+                Contact contact = new Contact(_fullName[GenerateDigit(_random, _fullName.Length)],
+                _arrEmail[GenerateDigit(_random, _arrEmail.Length)],
+                _arrPhoneNumber[GenerateDigit(_random, _arrPhoneNumber.Length)], DateTime.Today,
+                _arrIDVk[GenerateDigit(_random, _arrIDVk.Length)]);
                 project.Contacts.Add(contact);
             }
             return project.Contacts;

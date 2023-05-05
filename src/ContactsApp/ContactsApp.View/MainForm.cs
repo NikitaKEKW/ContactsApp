@@ -53,9 +53,9 @@ namespace ContactsApp.View
                 _project.Contacts.RemoveAt(index);
                 _project.Contacts.Insert(index, updatedData);
             }
-            else if (editForm.DialogResult == DialogResult.Cancel) 
-            { 
-                return; 
+            else if (editForm.DialogResult == DialogResult.Cancel)
+            {
+                return;
             }
         }
 
@@ -72,7 +72,7 @@ namespace ContactsApp.View
             DialogResult result = MessageBox.Show(
                 $"Do you really want to remove {_project.Contacts[index].FullName}?",
                 "Delete contact",
-                MessageBoxButtons.OKCancel, 
+                MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Question);
             if (result == DialogResult.OK)
             {
@@ -100,9 +100,9 @@ namespace ContactsApp.View
         private void ClearSelectedContact()
         {
             FullNameTextBox.Text = "";
-            EmailTextBox.Text = "";    
+            EmailTextBox.Text = "";
             PhoneNumberTextBox.Text = "";
-            DateOfBirthTextBox.Text = "";  
+            DateOfBirthTextBox.Text = "";
             VKTextBox.Text = "";
         }
 
@@ -139,7 +139,7 @@ namespace ContactsApp.View
                 e.Cancel = true;
             }
         }
-        
+
         private void AddContactButton_Click(object sender, EventArgs e)
         {
             AddContact();
