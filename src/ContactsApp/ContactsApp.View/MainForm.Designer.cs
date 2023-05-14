@@ -41,7 +41,7 @@
             this.FullDataPanel = new System.Windows.Forms.Panel();
             this.BirthdayPanel = new System.Windows.Forms.Panel();
             this.BirthdayPanelCloseButton = new System.Windows.Forms.Button();
-            this.BirthdaySurnamesLabel = new System.Windows.Forms.Label();
+            this.BirthdaySurnameLabel = new System.Windows.Forms.Label();
             this.TodaysBirthdayLabel = new System.Windows.Forms.Label();
             this.InfoPictureBox = new System.Windows.Forms.PictureBox();
             this.VKTextBox = new System.Windows.Forms.TextBox();
@@ -226,7 +226,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BirthdayPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
             this.BirthdayPanel.Controls.Add(this.BirthdayPanelCloseButton);
-            this.BirthdayPanel.Controls.Add(this.BirthdaySurnamesLabel);
+            this.BirthdayPanel.Controls.Add(this.BirthdaySurnameLabel);
             this.BirthdayPanel.Controls.Add(this.TodaysBirthdayLabel);
             this.BirthdayPanel.Controls.Add(this.InfoPictureBox);
             this.BirthdayPanel.Location = new System.Drawing.Point(4, 373);
@@ -247,16 +247,16 @@
             this.BirthdayPanelCloseButton.UseVisualStyleBackColor = true;
             this.BirthdayPanelCloseButton.Click += new System.EventHandler(this.BirthdayPanelCloseButton_Click);
             // 
-            // BirthdaySurnamesLabel
+            // BirthdaySurnameLabel
             // 
-            this.BirthdaySurnamesLabel.AutoSize = true;
-            this.BirthdaySurnamesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BirthdaySurnamesLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
-            this.BirthdaySurnamesLabel.Location = new System.Drawing.Point(80, 35);
-            this.BirthdaySurnamesLabel.Name = "BirthdaySurnamesLabel";
-            this.BirthdaySurnamesLabel.Size = new System.Drawing.Size(216, 13);
-            this.BirthdaySurnamesLabel.TabIndex = 2;
-            this.BirthdaySurnamesLabel.Text = "Осипов, Агапова, Пономарев и др.";
+            this.BirthdaySurnameLabel.AutoSize = true;
+            this.BirthdaySurnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BirthdaySurnameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
+            this.BirthdaySurnameLabel.Location = new System.Drawing.Point(80, 35);
+            this.BirthdaySurnameLabel.Name = "BirthdaySurnameLabel";
+            this.BirthdaySurnameLabel.Size = new System.Drawing.Size(216, 13);
+            this.BirthdaySurnameLabel.TabIndex = 2;
+            this.BirthdaySurnameLabel.Text = "Осипов, Агапова, Пономарев и др.";
             // 
             // TodaysBirthdayLabel
             // 
@@ -433,7 +433,7 @@
         private System.Windows.Forms.TextBox PhoneNumberTextBox;
         private System.Windows.Forms.Label PhoneNumberLabel;
         private System.Windows.Forms.Label EmailLabel;
-        private System.Windows.Forms.Label BirthdaySurnamesLabel;
+        private System.Windows.Forms.Label BirthdaySurnameLabel;
         private System.Windows.Forms.Label TodaysBirthdayLabel;
         private System.Windows.Forms.PictureBox InfoPictureBox;
         private System.Windows.Forms.Button BirthdayPanelCloseButton;

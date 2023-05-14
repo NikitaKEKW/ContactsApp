@@ -96,7 +96,7 @@ namespace ContactsApp.Model
                 + _arrMalePatronymic[GenerateDigit(_random, _arrMalePatronymic.Length)];
 
             }
-            for (int i = 11; i < 20; i++)
+            for (int i = 11; i <= 20; i++)
             {
                 _fullName[i] = _arrFemaleSurname[GenerateDigit(_random, _arrFemaleSurname.Length)] + " " +
                 _arrFemaleName[GenerateDigit(_random, _arrFemaleName.Length)] + " "

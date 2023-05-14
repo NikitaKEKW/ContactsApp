@@ -11,20 +11,7 @@ namespace ContactsApp.View
         /// <summary>
         /// поле класса Contact
         /// </summary>
-        private Contact _contact = new Contact("", "", "89680695926", new DateTime(2000, 3, 6), "");
-
-        /// <summary>
-        /// Установка и получение экземпляра
-        /// </summary>
-        public Contact Contact
-        {
-            get => _contact;
-            set
-            {
-                _contact = value;
-                UpdateForm();
-            }
-        }
+        private Contact _contact;
 
         /// <summary>
         /// текствое поле ошибки FullName
@@ -51,10 +38,25 @@ namespace ContactsApp.View
         /// </summary>
         private string _vkIdError;
 
+        /// <summary>
+        /// Установка и получение экземпляра
+        /// </summary>
+        public Contact Contact
+        {
+            get
+            {
+                return _contact;
+            }
+            set
+            {
+                _contact = value;
+                UpdateForm();
+            }
+        }
+
         public ContactForm()
         {
             InitializeComponent();
-            UpdateForm();
         }
 
         /// <summary>
@@ -75,19 +77,25 @@ namespace ContactsApp.View
         /// <returns></returns>
         private bool CheckFormOnErrors()
         {
-            string _validationError = null;
-            _validationError += _fullNameError;
-            _validationError += _emailError;
-            _validationError += _phoneNumberError;
-            _validationError += _dateOfBirthError;
-            _validationError += _vkIdError;
-            if (_validationError != null && _validationError != "")
+            string[] errorsArray = { _fullNameError, _emailError,
+                  _phoneNumberError, _dateOfBirthError,_vkIdError };
+            string errorText = null;
+            foreach (string error in errorsArray)
             {
-                MessageBox.Show($"{_fullNameError}\n{_emailError}\n{_phoneNumberError}\n{_dateOfBirthError}\n{_vkIdError}",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (error != null)
+                {
+                    errorText += error + "\n";
+                }
+            }
+            if (errorText == null || errorText == "")
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(errorText, "",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return false;
             }
-            else return true;
         }
 
         /// <summary>
