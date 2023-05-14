@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace ContactsApp.Model
 {
@@ -46,7 +47,7 @@ namespace ContactsApp.Model
         public List<Contact> FindContaсts(List<Contact> contact, string contactName)
         {
             var selectedContact = contact.Where(contacts => contacts.FullName.Contains(contactName)).ToList();
-            return (List<Contact>)selectedContact;
+            return selectedContact;
         }
     }
 }

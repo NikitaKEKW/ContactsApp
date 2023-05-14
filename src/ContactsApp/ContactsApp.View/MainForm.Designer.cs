@@ -33,17 +33,12 @@
             this.ContactsPanel = new System.Windows.Forms.Panel();
             this.ContactsListBox = new System.Windows.Forms.ListBox();
             this.ButtonsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.DeleteContactButton = new System.Windows.Forms.PictureBox();
-            this.EditContactButton = new System.Windows.Forms.PictureBox();
-            this.AddContactButton = new System.Windows.Forms.PictureBox();
             this.FindLabel = new System.Windows.Forms.Label();
             this.FindTextBox = new System.Windows.Forms.TextBox();
             this.FullDataPanel = new System.Windows.Forms.Panel();
             this.BirthdayPanel = new System.Windows.Forms.Panel();
-            this.BirthdayPanelCloseButton = new System.Windows.Forms.Button();
             this.BirthdaySurnameLabel = new System.Windows.Forms.Label();
             this.TodaysBirthdayLabel = new System.Windows.Forms.Label();
-            this.InfoPictureBox = new System.Windows.Forms.PictureBox();
             this.VKTextBox = new System.Windows.Forms.TextBox();
             this.VKLabel = new System.Windows.Forms.Label();
             this.DateOfBirthTextBox = new System.Windows.Forms.TextBox();
@@ -54,15 +49,22 @@
             this.EmailLabel = new System.Windows.Forms.Label();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
+            this.DeleteContactButton = new System.Windows.Forms.PictureBox();
+            this.EditContactButton = new System.Windows.Forms.PictureBox();
+            this.AddContactButton = new System.Windows.Forms.PictureBox();
+            this.RandomContactsButton = new System.Windows.Forms.PictureBox();
+            this.BirthdayPanelCloseButton = new System.Windows.Forms.Button();
+            this.InfoPictureBox = new System.Windows.Forms.PictureBox();
             this.PhotoPictureBox = new System.Windows.Forms.PictureBox();
             this.ListBoxTableLayoutPanel.SuspendLayout();
             this.ContactsPanel.SuspendLayout();
             this.ButtonsTableLayoutPanel.SuspendLayout();
+            this.FullDataPanel.SuspendLayout();
+            this.BirthdayPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DeleteContactButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EditContactButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddContactButton)).BeginInit();
-            this.FullDataPanel.SuspendLayout();
-            this.BirthdayPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RandomContactsButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InfoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -128,59 +130,21 @@
             // 
             this.ButtonsTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonsTableLayoutPanel.ColumnCount = 3;
-            this.ButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.ButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.ButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.ButtonsTableLayoutPanel.ColumnCount = 4;
+            this.ButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.ButtonsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.ButtonsTableLayoutPanel.Controls.Add(this.DeleteContactButton, 2, 0);
             this.ButtonsTableLayoutPanel.Controls.Add(this.EditContactButton, 1, 0);
             this.ButtonsTableLayoutPanel.Controls.Add(this.AddContactButton, 0, 0);
+            this.ButtonsTableLayoutPanel.Controls.Add(this.RandomContactsButton, 3, 0);
             this.ButtonsTableLayoutPanel.Location = new System.Drawing.Point(3, 404);
             this.ButtonsTableLayoutPanel.Name = "ButtonsTableLayoutPanel";
             this.ButtonsTableLayoutPanel.RowCount = 1;
             this.ButtonsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ButtonsTableLayoutPanel.Size = new System.Drawing.Size(238, 35);
             this.ButtonsTableLayoutPanel.TabIndex = 3;
-            // 
-            // DeleteContactButton
-            // 
-            this.DeleteContactButton.Image = global::ContactsApp.View.Properties.Resources.remove_contact_32x32_gray;
-            this.DeleteContactButton.Location = new System.Drawing.Point(161, 3);
-            this.DeleteContactButton.Name = "DeleteContactButton";
-            this.DeleteContactButton.Padding = new System.Windows.Forms.Padding(3);
-            this.DeleteContactButton.Size = new System.Drawing.Size(74, 29);
-            this.DeleteContactButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.DeleteContactButton.TabIndex = 0;
-            this.DeleteContactButton.TabStop = false;
-            this.DeleteContactButton.Click += new System.EventHandler(this.DeleteContactButton_Click);
-            this.DeleteContactButton.MouseEnter += new System.EventHandler(this.DeleteContactButton_MouseEnter);
-            this.DeleteContactButton.MouseLeave += new System.EventHandler(this.DeleteContactButton_MouseLeave);
-            // 
-            // EditContactButton
-            // 
-            this.EditContactButton.Image = global::ContactsApp.View.Properties.Resources.edit_contact_32x32_gray;
-            this.EditContactButton.Location = new System.Drawing.Point(82, 3);
-            this.EditContactButton.Name = "EditContactButton";
-            this.EditContactButton.Size = new System.Drawing.Size(73, 29);
-            this.EditContactButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.EditContactButton.TabIndex = 1;
-            this.EditContactButton.TabStop = false;
-            this.EditContactButton.Click += new System.EventHandler(this.EditContactButton_Click);
-            this.EditContactButton.MouseEnter += new System.EventHandler(this.EditContactButton_MouseEnter);
-            this.EditContactButton.MouseLeave += new System.EventHandler(this.EditContactButton_MouseLeave);
-            // 
-            // AddContactButton
-            // 
-            this.AddContactButton.Image = global::ContactsApp.View.Properties.Resources.add_contact_32x32_gray;
-            this.AddContactButton.Location = new System.Drawing.Point(3, 3);
-            this.AddContactButton.Name = "AddContactButton";
-            this.AddContactButton.Size = new System.Drawing.Size(73, 29);
-            this.AddContactButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.AddContactButton.TabIndex = 2;
-            this.AddContactButton.TabStop = false;
-            this.AddContactButton.Click += new System.EventHandler(this.AddContactButton_Click);
-            this.AddContactButton.MouseEnter += new System.EventHandler(this.AddContactButton_MouseEnter);
-            this.AddContactButton.MouseLeave += new System.EventHandler(this.AddContactButton_MouseLeave);
             // 
             // FindLabel
             // 
@@ -197,6 +161,7 @@
             this.FindTextBox.Name = "FindTextBox";
             this.FindTextBox.Size = new System.Drawing.Size(204, 20);
             this.FindTextBox.TabIndex = 1;
+            this.FindTextBox.TextChanged += new System.EventHandler(this.FindTextBox_TextChanged);
             // 
             // FullDataPanel
             // 
@@ -234,19 +199,6 @@
             this.BirthdayPanel.Size = new System.Drawing.Size(537, 68);
             this.BirthdayPanel.TabIndex = 12;
             // 
-            // BirthdayPanelCloseButton
-            // 
-            this.BirthdayPanelCloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BirthdayPanelCloseButton.FlatAppearance.BorderSize = 0;
-            this.BirthdayPanelCloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BirthdayPanelCloseButton.Image = global::ContactsApp.View.Properties.Resources.close_32x32;
-            this.BirthdayPanelCloseButton.Location = new System.Drawing.Point(499, 3);
-            this.BirthdayPanelCloseButton.Name = "BirthdayPanelCloseButton";
-            this.BirthdayPanelCloseButton.Size = new System.Drawing.Size(32, 32);
-            this.BirthdayPanelCloseButton.TabIndex = 3;
-            this.BirthdayPanelCloseButton.UseVisualStyleBackColor = true;
-            this.BirthdayPanelCloseButton.Click += new System.EventHandler(this.BirthdayPanelCloseButton_Click);
-            // 
             // BirthdaySurnameLabel
             // 
             this.BirthdaySurnameLabel.AutoSize = true;
@@ -268,16 +220,6 @@
             this.TodaysBirthdayLabel.Size = new System.Drawing.Size(146, 13);
             this.TodaysBirthdayLabel.TabIndex = 1;
             this.TodaysBirthdayLabel.Text = "Today is the Birthday of:";
-            // 
-            // InfoPictureBox
-            // 
-            this.InfoPictureBox.Image = global::ContactsApp.View.Properties.Resources.info_48x48;
-            this.InfoPictureBox.Location = new System.Drawing.Point(3, 2);
-            this.InfoPictureBox.Name = "InfoPictureBox";
-            this.InfoPictureBox.Size = new System.Drawing.Size(71, 64);
-            this.InfoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.InfoPictureBox.TabIndex = 0;
-            this.InfoPictureBox.TabStop = false;
             // 
             // VKTextBox
             // 
@@ -375,6 +317,82 @@
             this.FullNameLabel.TabIndex = 2;
             this.FullNameLabel.Text = "Full Name:";
             // 
+            // DeleteContactButton
+            // 
+            this.DeleteContactButton.Image = global::ContactsApp.View.Properties.Resources.remove_contact_32x32_gray;
+            this.DeleteContactButton.Location = new System.Drawing.Point(121, 3);
+            this.DeleteContactButton.Name = "DeleteContactButton";
+            this.DeleteContactButton.Padding = new System.Windows.Forms.Padding(3);
+            this.DeleteContactButton.Size = new System.Drawing.Size(53, 29);
+            this.DeleteContactButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.DeleteContactButton.TabIndex = 0;
+            this.DeleteContactButton.TabStop = false;
+            this.DeleteContactButton.Click += new System.EventHandler(this.DeleteContactButton_Click);
+            this.DeleteContactButton.MouseEnter += new System.EventHandler(this.DeleteContactButton_MouseEnter);
+            this.DeleteContactButton.MouseLeave += new System.EventHandler(this.DeleteContactButton_MouseLeave);
+            // 
+            // EditContactButton
+            // 
+            this.EditContactButton.Image = global::ContactsApp.View.Properties.Resources.edit_contact_32x32_gray;
+            this.EditContactButton.Location = new System.Drawing.Point(62, 3);
+            this.EditContactButton.Name = "EditContactButton";
+            this.EditContactButton.Size = new System.Drawing.Size(53, 29);
+            this.EditContactButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.EditContactButton.TabIndex = 1;
+            this.EditContactButton.TabStop = false;
+            this.EditContactButton.Click += new System.EventHandler(this.EditContactButton_Click);
+            this.EditContactButton.MouseEnter += new System.EventHandler(this.EditContactButton_MouseEnter);
+            this.EditContactButton.MouseLeave += new System.EventHandler(this.EditContactButton_MouseLeave);
+            // 
+            // AddContactButton
+            // 
+            this.AddContactButton.Image = global::ContactsApp.View.Properties.Resources.add_contact_32x32_gray;
+            this.AddContactButton.Location = new System.Drawing.Point(3, 3);
+            this.AddContactButton.Name = "AddContactButton";
+            this.AddContactButton.Size = new System.Drawing.Size(53, 29);
+            this.AddContactButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.AddContactButton.TabIndex = 2;
+            this.AddContactButton.TabStop = false;
+            this.AddContactButton.Click += new System.EventHandler(this.AddContactButton_Click);
+            this.AddContactButton.MouseEnter += new System.EventHandler(this.AddContactButton_MouseEnter);
+            this.AddContactButton.MouseLeave += new System.EventHandler(this.AddContactButton_MouseLeave);
+            // 
+            // RandomContactsButton
+            // 
+            this.RandomContactsButton.Image = global::ContactsApp.View.Properties.Resources.random_contact_32x32_gray;
+            this.RandomContactsButton.Location = new System.Drawing.Point(180, 3);
+            this.RandomContactsButton.Name = "RandomContactsButton";
+            this.RandomContactsButton.Size = new System.Drawing.Size(55, 29);
+            this.RandomContactsButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.RandomContactsButton.TabIndex = 3;
+            this.RandomContactsButton.TabStop = false;
+            this.RandomContactsButton.Click += new System.EventHandler(this.RandomContactsButton_Click);
+            this.RandomContactsButton.MouseEnter += new System.EventHandler(this.RandomContactsButton_MouseEnter);
+            this.RandomContactsButton.MouseLeave += new System.EventHandler(this.RandomContactsButton_MouseLeave);
+            // 
+            // BirthdayPanelCloseButton
+            // 
+            this.BirthdayPanelCloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BirthdayPanelCloseButton.FlatAppearance.BorderSize = 0;
+            this.BirthdayPanelCloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BirthdayPanelCloseButton.Image = global::ContactsApp.View.Properties.Resources.close_32x32;
+            this.BirthdayPanelCloseButton.Location = new System.Drawing.Point(499, 3);
+            this.BirthdayPanelCloseButton.Name = "BirthdayPanelCloseButton";
+            this.BirthdayPanelCloseButton.Size = new System.Drawing.Size(32, 32);
+            this.BirthdayPanelCloseButton.TabIndex = 3;
+            this.BirthdayPanelCloseButton.UseVisualStyleBackColor = true;
+            this.BirthdayPanelCloseButton.Click += new System.EventHandler(this.BirthdayPanelCloseButton_Click);
+            // 
+            // InfoPictureBox
+            // 
+            this.InfoPictureBox.Image = global::ContactsApp.View.Properties.Resources.info_48x48;
+            this.InfoPictureBox.Location = new System.Drawing.Point(3, 2);
+            this.InfoPictureBox.Name = "InfoPictureBox";
+            this.InfoPictureBox.Size = new System.Drawing.Size(71, 64);
+            this.InfoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.InfoPictureBox.TabIndex = 0;
+            this.InfoPictureBox.TabStop = false;
+            // 
             // PhotoPictureBox
             // 
             this.PhotoPictureBox.Image = global::ContactsApp.View.Properties.Resources.photo_placeholder_100x100;
@@ -402,13 +420,14 @@
             this.ContactsPanel.ResumeLayout(false);
             this.ContactsPanel.PerformLayout();
             this.ButtonsTableLayoutPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DeleteContactButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EditContactButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AddContactButton)).EndInit();
             this.FullDataPanel.ResumeLayout(false);
             this.FullDataPanel.PerformLayout();
             this.BirthdayPanel.ResumeLayout(false);
             this.BirthdayPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DeleteContactButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EditContactButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AddContactButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RandomContactsButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InfoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).EndInit();
             this.ResumeLayout(false);
@@ -443,6 +462,7 @@
         private System.Windows.Forms.PictureBox EditContactButton;
         private System.Windows.Forms.PictureBox AddContactButton;
         private System.Windows.Forms.TextBox FindTextBox;
+        private System.Windows.Forms.PictureBox RandomContactsButton;
     }
 }
 

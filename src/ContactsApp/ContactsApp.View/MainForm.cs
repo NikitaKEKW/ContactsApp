@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Reflection;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using ContactsApp.Model;
-using static System.ActivationContext;
 
 namespace ContactsApp.View
 {
@@ -35,10 +32,11 @@ namespace ContactsApp.View
         private void UpdateListBox()
         {
             ContactsListBox.Items.Clear();
+
             _project.Contacts = _project.SortContactsByFullName(_project.Contacts);
             _currentContacts = _project.FindContaсts(_project.Contacts, FindTextBox.Text);
 
-            foreach (Contact contact in _project.Contacts)
+            foreach (Contact contact in _currentContacts)
             {
                 ContactsListBox.Items.Add(contact.FullName);
             }
@@ -66,7 +64,7 @@ namespace ContactsApp.View
         /// </summary>
         private void AddRandomContacts()
         {
-            _project = RandomData.CreateRandomContactsData();
+            _project.Contacts.AddRange(ContactsInformation.GenerateRandomContactsName());
         }
 
         private void EditContact(int index)
@@ -75,12 +73,11 @@ namespace ContactsApp.View
             var editForm = new ContactForm();
             editForm.Contact = cloneContact;
             editForm.ShowDialog();
-            var updatedContact = editForm.Contact;
-            int someValue = _project.Contacts.IndexOf(_currentContacts[index]);
             if (editForm.DialogResult == DialogResult.OK)
             {
                 var updatedData = editForm.Contact;
                 ContactsListBox.Items.RemoveAt(index);
+                int someValue = _project.Contacts.IndexOf(_currentContacts[index]);
                 _project.Contacts.RemoveAt(index);
                 _project.Contacts.Insert(index, updatedData);
             }
@@ -192,10 +189,20 @@ namespace ContactsApp.View
             EditContact(ContactsListBox.SelectedIndex);
             UpdateListBox();
         }
+        private void RandomContactsButton_Click(object sender, EventArgs e)
+        {
+            AddRandomContacts();
+            UpdateListBox();
+        }
 
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void FindTextBox_TextChanged(object sender, EventArgs e)
+        {
+            UpdateListBox();
         }
 
         private void AddContactButton_MouseEnter(object sender, EventArgs e)
@@ -232,6 +239,18 @@ namespace ContactsApp.View
         {
             EditContactButton.Image = Properties.Resources.edit_contact_32x32_gray;
             EditContactButton.BackColor = Color.White;
+        }
+
+        private void RandomContactsButton_MouseEnter(object sender, EventArgs e)
+        {
+            RandomContactsButton.Image = Properties.Resources.random_contact_32x32;
+            RandomContactsButton.BackColor = ColorTranslator.FromHtml("#F5F5FF");
+        }
+
+        private void RandomContactsButton_MouseLeave(object sender, EventArgs e)
+        {
+            RandomContactsButton.Image = Properties.Resources.random_contact_32x32_gray;
+            RandomContactsButton.BackColor = Color.White;
         }
 
         private void FullNameTextBox_KeyPress(object sender, KeyPressEventArgs e)

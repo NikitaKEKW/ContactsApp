@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using ContactsApp.Model;
 
@@ -93,7 +92,7 @@ namespace ContactsApp.View
             }
             else
             {
-                MessageBox.Show(errorText, "",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(errorText, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
