@@ -38,6 +38,17 @@ namespace ContactsApp.View
         private string _vkIdError;
 
         /// <summary>
+        /// цвет поля с ошибкой
+        /// </summary>
+        private static Color _errorColor = Color.LightPink;
+
+        /// <summary>
+        /// цвет правильного поля
+        /// </summary>
+        private static Color _correctColor = Color.White;
+
+
+        /// <summary>
         /// Установка и получение экземпляра
         /// </summary>
         public Contact Contact
@@ -121,13 +132,12 @@ namespace ContactsApp.View
             {
                 _contact.FullName = FullNameTextBox.Text;
                 _fullNameError = null;
-                FullNameTextBox.BackColor = Color.White;
+                FullNameTextBox.BackColor = _correctColor;
             }
             catch (Exception ex)
             {
                 _fullNameError = ex.Message;
-                FullNameTextBox.BackColor = Color.LightPink;
-                throw new ArgumentException(ex.Message);
+                FullNameTextBox.BackColor = _errorColor;
             }
         }
 
@@ -143,13 +153,12 @@ namespace ContactsApp.View
             {
                 _contact.Email = EmailTextBox.Text;
                 _emailError = null;
-                EmailTextBox.BackColor = Color.White;
+                EmailTextBox.BackColor = _correctColor;
             }
             catch (Exception ex)
             {
                 _emailError = ex.Message;
-                EmailTextBox.BackColor = Color.LightPink;
-                throw new ArgumentException(ex.Message);
+                EmailTextBox.BackColor = _errorColor;
             }
         }
 
@@ -165,13 +174,12 @@ namespace ContactsApp.View
             {
                 _phoneNumberError = null;
                 _contact.PhoneNumber = PhoneNumberTextBox.Text;
-                PhoneNumberTextBox.BackColor = Color.White;
+                PhoneNumberTextBox.BackColor = _correctColor;
             }
             catch (Exception ex)
             {
                 _phoneNumberError = ex.Message;
-                PhoneNumberTextBox.BackColor = Color.LightPink;
-                throw new ArgumentException(ex.Message);
+                PhoneNumberTextBox.BackColor = _errorColor;
             }
         }
 
@@ -191,7 +199,6 @@ namespace ContactsApp.View
             catch (Exception ex)
             {
                 _dateOfBirthError = ex.Message;
-                throw new ArgumentException(ex.Message);
             }
         }
 
@@ -207,13 +214,12 @@ namespace ContactsApp.View
             {
                 _contact.VkId = VKTextBox.Text;
                 _vkIdError = null;
-                VKTextBox.BackColor = Color.White;
+                VKTextBox.BackColor = _correctColor;
             }
             catch (Exception ex)
             {
                 _vkIdError = ex.Message;
-                VKTextBox.BackColor = Color.LightPink;
-                throw new ArgumentException(ex.Message);
+                VKTextBox.BackColor = _errorColor;
             }
         }
 
@@ -234,8 +240,7 @@ namespace ContactsApp.View
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            bool CheckError = CheckFormOnErrors();
-            if (CheckError)
+            if (CheckFormOnErrors())
             {
                 UpdateContact();
                 DialogResult = DialogResult.OK;

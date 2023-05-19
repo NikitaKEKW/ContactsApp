@@ -32,7 +32,6 @@ namespace ContactsApp.View
         private void UpdateListBox()
         {
             ContactsListBox.Items.Clear();
-
             _project.Contacts = _project.SortContactsByFullName(_project.Contacts);
             _currentContacts = _project.FindContaсts(_project.Contacts, FindTextBox.Text);
 
@@ -69,15 +68,15 @@ namespace ContactsApp.View
 
         private void EditContact(int index)
         {
-            var cloneContact = (Contact)_project.Contacts[index].Clone();
+            var contact = (Contact)_project.Contacts[index].Clone();
             var editForm = new ContactForm();
-            editForm.Contact = cloneContact;
+            editForm.Contact = contact;
             editForm.ShowDialog();
             if (editForm.DialogResult == DialogResult.OK)
             {
                 var updatedData = editForm.Contact;
                 ContactsListBox.Items.RemoveAt(index);
-                int someValue = _project.Contacts.IndexOf(_currentContacts[index]);
+                int contactIndex = _project.Contacts.IndexOf(_currentContacts[index]);
                 _project.Contacts.RemoveAt(index);
                 _project.Contacts.Insert(index, updatedData);
             }
@@ -110,12 +109,12 @@ namespace ContactsApp.View
         /// <param name="index"></param>
         private void UpdateSelectedContact(int index)
         {
-            Contact contactValue = _project.Contacts[index];
-            FullNameTextBox.Text = contactValue.FullName;
-            EmailTextBox.Text = contactValue.Email;
-            PhoneNumberTextBox.Text = contactValue.PhoneNumber;
-            DateOfBirthTextBox.Text = contactValue.DateOfBirth.ToString();
-            VKTextBox.Text = contactValue.VkId;
+            Contact contact = _project.Contacts[index];
+            FullNameTextBox.Text = contact.FullName;
+            EmailTextBox.Text = contact.Email;
+            PhoneNumberTextBox.Text = contact.PhoneNumber;
+            DateOfBirthTextBox.Text = contact.DateOfBirth.ToString();
+            VKTextBox.Text = contact.VkId;
         }
 
         /// <summary>
@@ -149,6 +148,8 @@ namespace ContactsApp.View
             RemoveContact(ContactsListBox.SelectedIndex);
             ClearSelectedContact();
             UpdateListBox();
+            ProjectSerializer.SaveToFile(_project);
+
         }
 
         private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -162,6 +163,7 @@ namespace ContactsApp.View
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            ProjectSerializer.SaveToFile(_project);
             DialogResult result = MessageBox.Show(
                 "Do you really want to exit?",
                 "Exit",
@@ -181,23 +183,27 @@ namespace ContactsApp.View
         private void AddContactButton_Click(object sender, EventArgs e)
         {
             AddContact();
+            ProjectSerializer.SaveToFile(_project);
             UpdateListBox();
         }
 
         private void EditContactButton_Click(object sender, EventArgs e)
         {
             EditContact(ContactsListBox.SelectedIndex);
+            ProjectSerializer.SaveToFile(_project);
             UpdateListBox();
         }
-        private void RandomContactsButton_Click(object sender, EventArgs e)
+        private void AddRandomContactsButton_Click(object sender, EventArgs e)
         {
             AddRandomContacts();
+            ProjectSerializer.SaveToFile(_project);
             UpdateListBox();
         }
 
         public MainForm()
         {
             InitializeComponent();
+            _project = ProjectSerializer.LoadFromFile();
         }
 
         private void FindTextBox_TextChanged(object sender, EventArgs e)
@@ -243,14 +249,14 @@ namespace ContactsApp.View
 
         private void RandomContactsButton_MouseEnter(object sender, EventArgs e)
         {
-            RandomContactsButton.Image = Properties.Resources.random_contact_32x32;
-            RandomContactsButton.BackColor = ColorTranslator.FromHtml("#F5F5FF");
+            AddRandomContactsButton.Image = Properties.Resources.random_contact_32x32;
+            AddRandomContactsButton.BackColor = ColorTranslator.FromHtml("#F5F5FF");
         }
 
         private void RandomContactsButton_MouseLeave(object sender, EventArgs e)
         {
-            RandomContactsButton.Image = Properties.Resources.random_contact_32x32_gray;
-            RandomContactsButton.BackColor = Color.White;
+            AddRandomContactsButton.Image = Properties.Resources.random_contact_32x32_gray;
+            AddRandomContactsButton.BackColor = Color.White;
         }
 
         private void FullNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -287,8 +293,8 @@ namespace ContactsApp.View
         {
             if (e.KeyCode == Keys.F1)
             {
-                var FormAbout = new AboutForm();
-                FormAbout.ShowDialog();
+                var formAbout = new AboutForm();
+                formAbout.ShowDialog();
             }
         }
     }
