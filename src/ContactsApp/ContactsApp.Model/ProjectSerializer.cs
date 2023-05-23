@@ -35,7 +35,7 @@ namespace ContactsApp.Model
             }
         }
 
-        /// <summary>
+        /// <summary> 
         /// Метод реализущий чтение данных с json файла
         /// </summary>
         /// <returns></returns>
