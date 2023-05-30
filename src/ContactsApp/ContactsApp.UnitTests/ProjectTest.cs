@@ -85,6 +85,7 @@ namespace ContactsApp.UnitTests
         {
             //Arrange
             _project.Contacts = new List<Contact>();
+
             _expected.Contacts = new List<Contact>();
 
             //Act
