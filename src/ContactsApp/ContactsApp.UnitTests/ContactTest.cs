@@ -7,13 +7,6 @@ namespace ContactsApp.UnitTests
     [TestFixture]
     public class ContactTest
     {
-        private Contact _contact;
-
-        [SetUp]
-        public void InitContact()
-        {
-            _contact = new Contact();
-        }
 
         [TestCase("Смирнов", "Геттер FullName возвращает неправильную фамилию",
             TestName = "Позитивный тест геттера FullName")]
@@ -21,10 +14,11 @@ namespace ContactsApp.UnitTests
         {
             //Arrange
             var expected = fullName;
-            _contact.FullName = expected;
+            var contact = new Contact();
+            contact.FullName = expected;
 
             //Act
-            var actual = _contact.FullName;
+            var actual = contact.FullName;
 
             //Assert
             Assert.AreEqual(expected, actual, message);
@@ -36,10 +30,11 @@ namespace ContactsApp.UnitTests
         {
             //Arrange
             var expected = email;
-            _contact.Email = expected;
+            var contact = new Contact();
+            contact.Email = expected;
 
             //Act
-            var actual = _contact.Email;
+            var actual = contact.Email;
 
             //Assert
             Assert.AreEqual(expected, actual, message);
@@ -59,10 +54,11 @@ namespace ContactsApp.UnitTests
         {
             //Arrange
             var expected = phone;
-            _contact.PhoneNumber = expected;
+            var contact = new Contact();
+            contact.PhoneNumber = expected;
 
             //Act
-            var actual = _contact.PhoneNumber;
+            var actual = contact.PhoneNumber;
 
             //Assert
             Assert.AreEqual(expected, actual, message);
@@ -74,10 +70,11 @@ namespace ContactsApp.UnitTests
         {
             //Arrange
             var expected = new DateTime(year, month, day);
-            _contact.DateOfBirth = expected;
+            var contact = new Contact();
+            contact.DateOfBirth = expected;
 
             //Act
-            var actual = _contact.DateOfBirth;
+            var actual = contact.DateOfBirth;
 
             //Assert
             Assert.AreEqual(expected, actual, message);
@@ -89,11 +86,12 @@ namespace ContactsApp.UnitTests
         {
             //Arrange
             var expected = idVk;
-            _contact.VkId = expected;
+            var contact = new Contact();
+            contact.VkId = expected;
 
             //Act
-            var actual = _contact.VkId;
-
+            var actual = contact.VkId;
+                
             //Assert
             Assert.AreEqual(expected, actual, message);
         }
@@ -105,12 +103,15 @@ namespace ContactsApp.UnitTests
             TestName = "Присвоение неправильного полного имени больше 100 символов")]
         public void FullName_SetTooLongFullName_ThrowsException(string wrongSurname, string message)
         {
+            //Arrange
+            var contact = new Contact();
+
             //Assert
             Assert.Throws<ArgumentException>(
                 () =>
                 {
                     //Act
-                    _contact.FullName = wrongSurname;
+                    contact.FullName = wrongSurname;
                 },
                 message);
         }
@@ -122,13 +123,15 @@ namespace ContactsApp.UnitTests
             TestName = "Присвоение неправильной почты больше 100 символов")]
         public void Email_SetTooLongEmail_ThrowsException(string wrongEmail, string message)
         {
+            //Arrange
+            var contact = new Contact();
 
             //Assert
             Assert.Throws<ArgumentException>(
                 () =>
                 {
                     //Act
-                    _contact.Email = wrongEmail;
+                    contact.Email = wrongEmail;
                 },
                 message);
         }
@@ -149,13 +152,15 @@ namespace ContactsApp.UnitTests
             TestName = "Присвоение не шаблонного номера телефона")]
         public void Phone_SetPhoneInWrongFormat_ThrowsException(string wrongNumber, string message)
         {
+            //Arrange
+            var contact = new Contact();
 
             //Assert
             Assert.Throws<ArgumentException>(
                 () =>
                 {
                     //Act
-                    _contact.PhoneNumber = wrongNumber;
+                    contact.PhoneNumber = wrongNumber;
                 },
                 message);
         }
@@ -170,13 +175,14 @@ namespace ContactsApp.UnitTests
         {
             //Arrange
             var wrongDateOfBirth = new DateTime(year, month, day);
+            var contact = new Contact();
 
             //Assert
             Assert.Throws<ArgumentException>(
                 () =>
                 {
                     //Act
-                    _contact.DateOfBirth = wrongDateOfBirth;
+                    contact.DateOfBirth = wrongDateOfBirth;
                 },
                 message);
         }
@@ -186,13 +192,15 @@ namespace ContactsApp.UnitTests
             TestName = "Присвоение неправильного ID больше 40 символов")]
         public void IdVk_SetTooLongIdVk_ThrowsExceptionn(string wrongIdVk, string message)
         {
+            //Arrange
+            var contact = new Contact();
 
             //Assert
             Assert.Throws<ArgumentException>(
                 () =>
                 {
                     //Act
-                    _contact.VkId = wrongIdVk;
+                    contact.VkId = wrongIdVk;
                 },
                 message);
         }
