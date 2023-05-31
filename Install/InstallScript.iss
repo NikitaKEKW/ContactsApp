@@ -28,7 +28,7 @@ LicenseFile=C:\Users\Nikita\source\repos\ContactsApp\LICENSE
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 OutputDir=C:\Users\Nikita\source\repos\ContactsApp\Install\Output
-OutputBaseFilename=ContactsAppSetup + DateToday
+OutputBaseFilename=ContactsAppSetup
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
