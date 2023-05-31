@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.Serialization;
 using static System.Environment;
 using Newtonsoft.Json;
 
@@ -11,8 +10,13 @@ namespace ContactsApp.Model
         /// <summary>
         /// Поле хранящая путь до файла
         /// </summary>
-        public static string Filename = GetFolderPath(SpecialFolder.ApplicationData)
-            + @"\Danilik\ContactsApp\userdata.json";
+        public static string Directoryname = GetFolderPath(SpecialFolder.ApplicationData)
+            + @"\Danilik\ContactsApp";
+
+        /// <summary>
+        /// Поле хранящее путь до файла и его название
+        /// </summary>
+        public static string Filename = Directoryname + @"\userdata.json";
 
         /// <summary>
         /// Метод реализующий сохранение данных в json файл
@@ -21,11 +25,13 @@ namespace ContactsApp.Model
         /// <exception cref="ArgumentException"></exception>
         public static void SaveToFile(Project project)
         {
-            FileStream fileWithDataContacts;
-
-            if (!File.Exists(Filename))
+            if (!Directory.Exists(Directoryname))
             {
-                fileWithDataContacts = new FileStream(Filename, FileMode.Create);
+                Directory.CreateDirectory(Directoryname);
+                if (!File.Exists(Filename))
+                {
+                    FileStream fileWithDataContacts = new FileStream(Filename, FileMode.Create);
+                }
             }
             JsonSerializer serializer = new JsonSerializer();
             using (StreamWriter streamWriter = new StreamWriter(Filename))
