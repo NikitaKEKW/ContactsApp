@@ -3,421 +3,200 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using ContactsApp.Model;
 
-namespace ContactsApp.UnitTests
+
+namespace ContactApp.UnitTests
 {
-   
     [TestFixture]
-    public class ProjectTest
+    class ProjectTest
     {
-        [TestCase("Метод сортировки контактов вернул неверные значения списка контактов",
-            TestName = "Тестирование сортировки списка контактов")]
-        public void Contacts_SortContactsByFullName_ReturnsValue(string message)
+        [TestCase("Список контактов не отсортирован, так как список пустой",
+            TestName = "Тест сортировки списка контактов без значений")]
+        public void Project_SortContactsListWithoutContacts_ReturnsValue(string message)
         {
-            //Arrange
-            var project = new Project();
-            project.Contacts = new List<Contact>()
-            {
-                new Contact(
-                    "C",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"),
-                new Contact(
-                    "B",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2010, 12, 12),
-                    "@test"),
-                new Contact(
-                    "A",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2001, 12, 12),
-                    "@test")
-            };
-
+            // Arrange
             var expected = new Project();
-            expected.Contacts = new List<Contact>()
-            {
-                new Contact(
-                    "A",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2001, 12, 12),
-                    "@test"
-                    ),
-                new Contact(
-                    "B",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2010, 12, 12),
-                    "@test"),
-                new Contact(
-                    "C",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test")
-            };
-
-            //Act
-            var actual = new Project();
-            actual.Contacts = project.SortContactsByFullName(project.Contacts);
-
-            //Assert
-            Assert.AreEqual(expected.Contacts[0].FullName,actual.Contacts[0].FullName, message);
-        }
-
-        [TestCase("Метод сортировки контактов вернул неверные значения списка контактов",
-            TestName = "Тестирование сортировки пустого списка контактов")]
-        public void Contacts_SortContactsWithoutValues_ReturnsValue(string message)
-        {
-            //Arrange
+            expected.Contacts = new List<Contact>();
             var project = new Project();
             project.Contacts = new List<Contact>();
 
-            var expected = new Project();
-            expected.Contacts = new List<Contact>();
-
-            //Act
+            // Act
             var actual = new Project();
-            actual.Contacts = project.SortContactsByFullName(project.Contacts);
+            project.SortContactsByFullName();
+            actual = project;
 
-            //Assert
-            Assert.AreEqual(expected.Contacts,actual.Contacts, message);
+            // Assert
+            Assert.That(actual.Contacts, Is.EqualTo(expected.Contacts), message);
         }
 
-        [TestCase("Метод сортировки контактов вернул неверные значения списка контактов",
-            TestName = "Тестирование уже отсортированного списка контактов")]
-        public void Contacts_SortContactsByFullNameWithSortedListContacts_ReturnsValue(
-            string message)
+        [TestCase("Список контактов не отсортирован",
+            TestName = "Тест сортировки списка имеющего контакты")]
+        public void Project_SortContactsList_ReturnsValue(string message)
         {
-            //Arrange
-            var project = new Project();
-            project.Contacts = new List<Contact>()
-            {
-                new Contact(
-                    "A",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    ),
-                new Contact(
-                    "B",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    ),
-                new Contact(
-                    "C",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    )
-            };
-
+            // Arrange  
             var expected = new Project();
             expected.Contacts = new List<Contact>()
             {
                 new Contact(
-                    "A",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    ),
+                    "Смирнов Андрей","Smirno@mail.ru","+7(978)0695925",DateTime.Today,"@id123"),
                 new Contact(
-                    "B",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"),
+                    "Котчетов Иван","kochid@mail.ru","+7(978)0695927",DateTime.Today,"@id456"),
                 new Contact(
-                    "C",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test")
+                    "Гавриленко Михаил","mixa@mail.ru","+7(978)0695928",DateTime.Today,"@id789")
+
             };
-
-            //Act
-            var actual = new Project();
-            actual.Contacts = project.SortContactsByFullName(project.Contacts);
-
-            //Assert
-            Assert.AreEqual(expected.Contacts[0].FullName,
-                actual.Contacts[0].FullName, message);
-        }
-
-        [TestCase("Метод поиска именинников вернул неверное значения списка контактов",
-            TestName = "Тестирование поиска именинников")]
-        public void Contacts_FindBirthdayContacts_ReturnsValue(string message)
-        {
-            //Arrange
             var project = new Project();
             project.Contacts = new List<Contact>()
             {
                 new Contact(
-                    "A",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    ),
+                    "Смирнов Андрей","Smirno@mail.ru","+7(978)0695925",DateTime.Today,"@id123"),
                 new Contact(
-                    "B",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    ),
+                    "Котчетов Иван","kochid@mail.ru","+7(978)0695927",DateTime.Today,"@id456"),
                 new Contact(
-                    "C",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    DateTime.Today,
-                    "@test"
-                    )
+                    "Гавриленко Михаил","mixa@mail.ru","+7(978)0695928",DateTime.Today,"@id789")
             };
 
+            // Act
+            var actual = new Project();
+            project.SortContactsByFullName();
+            actual = project;
+
+            // Assert
+            Assert.That(actual.Contacts[1].FullName, Is.EqualTo(expected.Contacts[1].FullName), message);
+        }
+
+        [TestCase("Отсортированный список контактов не отсортирован",
+            TestName = "Тест сортировки отсортированного списка контактов")]
+        public void Project_SortSortedContactsList_ReturnsValue(string message)
+        {
+            // Arrange
             var expected = new Project();
             expected.Contacts = new List<Contact>()
             {
                 new Contact(
-                    "C",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    DateTime.Today,
-                    "@test"
-                    ),
+                    "Смирнов Андрей","Smirno@mail.ru","+7(978)0695925",DateTime.Today,"@id123"),
+                new Contact(
+                    "Котчетов Иван","kochid@mail.ru","+7(978)0695927",DateTime.Today,"@id456"),
+                new Contact(
+                    "Гавриленко Михаил","mixa@mail.ru","+7(978)0695928",DateTime.Today,"@id789")
             };
-
-            //Act
-            var actual = new Project();
-            actual.Contacts = project.FindBirthdayContacts(project.Contacts);
-
-            //Assert
-            Assert.AreEqual(expected.Contacts[0].FullName,actual.Contacts[0].FullName, message);
-        }
-
-        [TestCase("Метод поиска именинников вернул неверное значения списка контактов",
-            TestName = "Тестирование поиска именинников если сегодня их нет")]
-        public void Contacts_FindBirthdayContactsWithoutBirthdayContacts_ReturnsValue(string message)
-        {
-            //Arrange
             var project = new Project();
             project.Contacts = new List<Contact>()
             {
                 new Contact(
-                    "A",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    ),
+                    "Гавриленко Михаил","mixa@mail.ru","+7(978)0695928",DateTime.Today,"@id789"),
                 new Contact(
-                    "B",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    ),
+                    "Котчетов Иван","kochid@mail.ru","+7(978)0695927",DateTime.Today,"@id456"),
                 new Contact(
-                    "C",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    )
+                    "Смирнов Андрей","Smirno@mail.ru","+7(978)0695925",DateTime.Today,"@id123"),
             };
 
-            var expected = new Project();
-            expected.Contacts = new List<Contact>();
-
-            //Act
+            // Act
             var actual = new Project();
-            actual.Contacts = project.FindBirthdayContacts(project.Contacts);
+            project.SortContactsByFullName();
+            actual = project;
 
-            //Assert
-            Assert.AreEqual(expected.Contacts,actual.Contacts, message);
+            // Assert
+            Assert.That(actual.Contacts[1].FullName, Is.EqualTo(expected.Contacts[1].FullName), message);
         }
 
-        [TestCase("Метод поиска именинников вернул неверное значения списка контактов",
-            TestName = "Тестирование поиска именинников если список контактов пустой")]
-        public void Contacts_FindBirthdayContactsWithEmptyListContacts_ReturnsValue(string message)
+        [TestCase("", "Контакты не найдены",
+           TestName = "Тест поиска контактов в пустом списке с пустым искомым контактом")]
+        public void Project_SearchContactsInEmptyListWithoutSubstringValue_ReturnsValue
+           (string searchedValue, string message)
         {
-            //Arrange
+            // Arrange
+            var expected = new Project();
+            expected.Contacts = new List<Contact>();
             var project = new Project();
             project.Contacts = new List<Contact>();
 
-            var expected = new Project();
-            expected.Contacts = new List<Contact>();
-
-            //Act
+            // Act
             var actual = new Project();
-            actual.Contacts = project.FindBirthdayContacts(project.Contacts);
+            actual.Contacts = project.FindContaсts(project.Contacts, searchedValue);
 
-            //Assert
-            Assert.AreEqual(expected.Contacts,actual.Contacts, message);
+            // Assert
+            Assert.That(actual.Contacts, Is.EqualTo(expected.Contacts), message);
         }
 
-        [TestCase("Смирнов", "Метод поиска контактов возвращает неверные значения списка контактов",
-            TestName = "Тестирование поиска контактов")]
-        public void Contacts_FindContacts_ReturnsValue(string contactName, string message)
+        [TestCase("Данил", "Контакты не найдены",
+           TestName = "Тест поиска контактов в пустом списке с искомым значением")]
+        public void Project_SearchContactsInEmptyListWithSubstingValue_ReturnsValue
+           (string searchedValue, string message)
         {
-            //Arrange
+            // Arrange
+            var expected = new Project();
+            expected.Contacts = new List<Contact>();
             var project = new Project();
-            project.Contacts = new List<Contact>()
-            {
-                new Contact(
-                    "Смирнов",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    ),
-                new Contact(
-                    "B",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    ),
-                new Contact(
-                    "C",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    )
-            };
+            project.Contacts = new List<Contact>();
 
+            // Act
+            var actual = new Project();
+            actual.Contacts = project.FindContaсts(project.Contacts, searchedValue);
+
+            // Assert
+            Assert.That(actual.Contacts, Is.EqualTo(expected.Contacts), message);
+        }
+
+        [TestCase("", "Контакты не найдены",
+        TestName = "Тест поиска контактов в полном списке с пустым искомым значением")]
+        public void Project_SearchContactsWithoutSubstringValue_ReturnsValue
+            (string searchedValue, string message)
+        {
+            // Arrange
             var expected = new Project();
             expected.Contacts = new List<Contact>()
             {
                 new Contact(
-                    "Смирнов",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    )
+                    "Смирнов Андрей","Smirno@mail.ru","+7(978)0695925",DateTime.Today,"@id123"),
+                new Contact(
+                    "Котчетов Иван","kochid@mail.ru","+7(978)0695927",DateTime.Today,"@id456"),
+                new Contact(
+                    "Гавриленко Михаил","mixa@mail.ru","+7(978)0695928",DateTime.Today,"@id789")
             };
-
-            //Act
-            var actual = new Project();
-            actual.Contacts = project.FindContaсts(project.Contacts, contactName);
-
-            //Assert
-            Assert.AreEqual(expected.Contacts[0].FullName,actual.Contacts[0].FullName, message);
-        }
-
-        [TestCase("Смирнов", "Метод поиска контактов возвращает неверные значения списка контактов",
-            TestName = "Тестирование поиска контактов в пустом списке контактов")]
-        public void Contacts_FindContactsWithEmptyListContacts_ReturnsValue(string contactName, string message)
-        {
-            //Arrange
-            var project = new Project();
-            project.Contacts = new List<Contact>();
-
-            var expected = new Project();
-            expected.Contacts = new List<Contact>();
-
-            //Act
-            var actual = new Project();
-            actual.Contacts = project.FindContaсts(project.Contacts, contactName);
-
-            //Assert
-            Assert.AreEqual(expected.Contacts,actual.Contacts, message);
-        }
-
-        [TestCase("", "Метод поиска контактов возвращает неверные значения списка контактов",
-            TestName = "Тестирование поиска контактов с пустым искомым контактом")]
-        public void Contacts_FindContactsWithEmptySubstring_ReturnsValue(string contactName, string message)
-        {
-            //Arrange
             var project = new Project();
             project.Contacts = new List<Contact>()
             {
                 new Contact(
-                    "Смирнов",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    ),
+                    "Смирнов Андрей","Smirno@mail.ru","+7(978)0695925",DateTime.Today,"@id123"),
                 new Contact(
-                    "B",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    ),
+                    "Котчетов Иван","kochid@mail.ru","+7(978)0695927",DateTime.Today,"@id456"),
                 new Contact(
-                    "C",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    )
+                    "Гавриленко Михаил","mixa@mail.ru","+7(978)0695928",DateTime.Today,"@id789")
             };
 
-            var expected = new Project();
-            expected.Contacts = new List<Contact>()
-            {
-                new Contact(
-                    "Смирнов",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    ),
-                new Contact(
-                    "B",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    ),
-                new Contact(
-                    "C",
-                    "asdf@mail.ru",
-                    "+79680695924",
-                    new DateTime(2000, 12, 12),
-                    "@test"
-                    )
-            };
-
-            //Act
+            // Act
             var actual = new Project();
-            actual.Contacts = project.FindContaсts(project.Contacts, contactName);
+            actual.Contacts = project.FindContaсts(project.Contacts, searchedValue);
 
-            //Assert
-            Assert.AreEqual(expected.Contacts[0].FullName, actual.Contacts[0].FullName, message);
+            // Assert
+            Assert.That(actual.Contacts[0].FullName, Is.EqualTo(expected.Contacts[0].FullName), message);
         }
 
-        [TestCase("", "Метод поиска контактов возвращает неверные значения списка контактов",
-            TestName = "Тестирование поиска контактов в пустом списке контактов" +
-            "с пустым искомым контактом")]
-        public void Contacts_FindContactsWithEmptyListContactsWithoutSubstring_ReturnsValue(string contactName, string message)
+        [TestCase("Кто-то", "Контакты не найдены",
+           TestName = "Тест поиска контактов на отсутсвие контакта в полном списке")]
+        public void Project_SearchContactsWithoutNeededContact_ReturnsValue
+           (string searchedValue, string message)
         {
-            //Arrange
-            var project = new Project();
-            project.Contacts = new List<Contact>();
-
+            // Arrange
             var expected = new Project();
             expected.Contacts = new List<Contact>();
+            var project = new Project();
+            project.Contacts = new List<Contact>()
+            {
+                new Contact(
+                    "Смирнов Андрей","Smirno@mail.ru","+7(978)0695925",DateTime.Today,"@id123"),
+                new Contact(
+                    "Котчетов Иван", "kochid@mail.ru", "+7(978)0695927", DateTime.Today, "@id456"),
+                new Contact(
+                    "Гавриленко Михаил","mixa@mail.ru","+7(978)0695928",DateTime.Today,"@id789")
+            };
 
-            //Act
+            // Act
             var actual = new Project();
-            actual.Contacts = project.FindContaсts(project.Contacts, contactName);
+            actual.Contacts = project.FindContaсts(project.Contacts, searchedValue);
 
-            //Assert
-            Assert.AreEqual(expected.Contacts,actual.Contacts, message);
+            // Assert
+            Assert.That(actual.Contacts, Is.EqualTo(expected.Contacts), message);
         }
     }
 }

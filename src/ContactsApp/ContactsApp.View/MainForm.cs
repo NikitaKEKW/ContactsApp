@@ -31,10 +31,9 @@ namespace ContactsApp.View
         /// </summary>
         private void UpdateListBox()
         {
+            _project.SortContactsByFullName();
             ContactsListBox.Items.Clear();
-            _project.Contacts = _project.SortContactsByFullName(_project.Contacts);
             _currentContacts = _project.FindContaсts(_project.Contacts, FindTextBox.Text);
-
             foreach (Contact contact in _currentContacts)
             {
                 ContactsListBox.Items.Add(contact.FullName);

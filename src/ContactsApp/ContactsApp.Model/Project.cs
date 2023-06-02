@@ -20,10 +20,9 @@ namespace ContactsApp.Model
         /// </summary>
         /// <param name="contact"></param>
         /// <returns></returns>
-        public List<Contact> SortContactsByFullName(List<Contact> contact)
+        public void SortContactsByFullName()
         {
-            var orderByContact = contact.OrderBy(contacts => contacts.FullName).ToList();
-            return orderByContact;
+            Contacts = Contacts.OrderBy(contacts => contacts.FullName).ToList();
         }
 
         /// <summary>
