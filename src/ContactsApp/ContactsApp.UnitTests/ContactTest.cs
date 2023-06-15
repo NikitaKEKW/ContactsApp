@@ -24,7 +24,7 @@ namespace ContactsApp.UnitTests
             Assert.AreEqual(expected, actual, message);
         }
 
-        [TestCase("asdf@mail.ru", "Геттер Email возвращает неправильную фамилию",
+        [TestCase("asdf@mail.ru", "Геттер Email возвращает неправильную почту",
             TestName = "Позитивный тест геттера Email")]
         public void Email_SetCorrectEmail__ReturnsEmail(string email, string message)
         {
@@ -64,7 +64,7 @@ namespace ContactsApp.UnitTests
             Assert.AreEqual(expected, actual, message);
         }
 
-        [TestCase(2000, 10, 10, "Геттер DateOfBirth возвращает неправильную фамилию",
+        [TestCase(2000, 10, 10, "Геттер DateOfBirth возвращает неправильную дату рождения",
             TestName = "Позитивный тест геттера DateOfBirth")]
         public void DateOfBirth_SetCorrectDateOfBirth_ReturnsDateOfBirth(int year, int month, int day, string message)
         {
@@ -80,7 +80,7 @@ namespace ContactsApp.UnitTests
             Assert.AreEqual(expected, actual, message);
         }
 
-        [TestCase("@superid01", "Геттер IdVk возвращает неправильную фамилию",
+        [TestCase("@superid01", "Геттер IdVk возвращает неправильную айди вк",
             TestName = "Позитивный тест геттера IdVk")]
         public void IdVk_SetCorrectIdVk_ReturnsIdVk(string idVk, string message)
         {
